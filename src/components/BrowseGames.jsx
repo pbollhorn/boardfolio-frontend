@@ -16,7 +16,7 @@ export default function BrowseGames() {
     }
     fun(); // Call the async function
   }, []); // Runs on mount
-
+  
   return (
     <>
       <h1>Browse Games</h1>
