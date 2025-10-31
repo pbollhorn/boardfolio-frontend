@@ -1,7 +1,9 @@
-export default function GameCardList() {
+export default function GameCardList({ list }) {
   return (
     <>
-      <p>Hello from GameCardList</p>
+      {list.map((e) => (
+        <p key={e.id}>{e.title}</p>
+      ))}
     </>
   );
 }
