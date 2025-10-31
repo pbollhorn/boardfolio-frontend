@@ -11,11 +11,9 @@ export default function BrowseGames() {
         const response = await fetch(
           "https://movie.jcoder.dk/api/movies/search?title=critters"
         );
-
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
-
         const payload = await response.json();
         setGameList(payload);
       } catch (error) {
