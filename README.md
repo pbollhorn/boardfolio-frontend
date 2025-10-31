@@ -9,8 +9,8 @@ Link to repo for backend: https://github.com/AndyTheDragon/BoardFolio
 - Bootstrap 5.3.8
 - Vite
 
-## Setup instructions on your local computer
-
+## Getting Started
+Setup instructions on your local computer:
 1. Clone down this repo: `git clone https://github.com/pbollhorn/boardfolio-frontend`
 2. Go into directory: `cd boardfolio-frontend`
 3. Install dependencies: `npm install`
