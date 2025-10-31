@@ -12,4 +12,4 @@ The frontend is built with React 19 and Vite.
 2. Go into directory: `cd boardfolio-frontend`
 3. Install dependencies: `npm install`
 4. Run the development server: `npm run dev`
-5. View the React app in your browser (should be at: http://localhost:5173/)
+5. View the React app in your browser (should be at http://localhost:5173/)
