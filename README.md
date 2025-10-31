@@ -6,7 +6,7 @@ Link to repo for backend: https://github.com/AndyTheDragon/BoardFolio
 
 The frontend is built with React 19 and Vite.
 
-## Setup instructions on your local computer:
+## Setup instructions on your local computer
 
 1. Clone down this repo: `git clone https://github.com/pbollhorn/boardfolio-frontend`
 2. Go into directory: `cd boardfolio-frontend`
