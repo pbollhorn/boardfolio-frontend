@@ -4,7 +4,10 @@ This repo contains the frontend for our BoardFolio web app.
 
 Link to repo for backend: https://github.com/AndyTheDragon/BoardFolio
 
-The frontend is built with React 19 and Vite.
+## Technologies Used
+- React 19
+- Bootstrap 5.3.8
+- Vite
 
 ## Setup instructions on your local computer
 
