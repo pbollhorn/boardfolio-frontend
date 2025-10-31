@@ -2,6 +2,8 @@
 
 This repo contains the frontend for our BoardFolio web app.
 
+Link to deployed frontend: (Not deployed yet)
+
 Link to repo for backend: https://github.com/AndyTheDragon/BoardFolio
 
 ## Technologies Used
