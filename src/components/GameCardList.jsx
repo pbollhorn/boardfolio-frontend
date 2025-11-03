@@ -1,10 +1,10 @@
 import GameCard from "./GameCard.jsx";
 
 export default function GameCardList({ list }) {
-    if (list.length === 0) {
+  if (list.length === 0) {
     return <p>No games found</p>;
   }
-  
+
   return (
     <>
       {list.map((e) => (
@@ -13,6 +13,3 @@ export default function GameCardList({ list }) {
     </>
   );
 }
-
-
-
