@@ -1,6 +1,6 @@
 import NoPoster from "../assets/NoPoster.png";
 
-export default function GameCard({ gameData }) {
+export default function GameListItem({ gameData }) {
   return (
     <div>
       <img

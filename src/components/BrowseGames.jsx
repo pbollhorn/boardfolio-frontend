@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GameCardList from "./GameCardList.jsx";
+import GameCardList from "./GameList.jsx";
 
 export default function BrowseGames() {
   const [gameList, setGameList] = useState([]);
