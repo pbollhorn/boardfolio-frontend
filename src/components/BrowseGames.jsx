@@ -3,6 +3,7 @@ import GameCardList from "./GameCardList.jsx";
 
 export default function BrowseGames() {
   const [gameList, setGameList] = useState([]);
+  const [statusMessage, setStatusMessage] = useState("Loading...");
 
   useEffect(() => {
     // Define an async function
@@ -12,12 +13,13 @@ export default function BrowseGames() {
           "https://movie.jcoder.dk/api/movies/search?title=critters"
         );
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          setStatusMessage(`HTTP ${response.status}: ${response.statusText}`);
         }
         const payload = await response.json();
         setGameList(payload);
+        setStatusMessage("");
       } catch (error) {
-        alert(`An error occurred:\n${error.message}`);
+        setStatusMessage(`An error occurred:\n${error.message}`);
       }
     }
     fun(); // Call the async function
@@ -26,7 +28,11 @@ export default function BrowseGames() {
   return (
     <>
       <h1>Browse Games</h1>
-      <GameCardList list={gameList} />
+      {statusMessage == "" ? (
+        <GameCardList list={gameList} />
+      ) : (
+        <p>{statusMessage}</p>
+      )}
     </>
   );
 }

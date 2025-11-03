@@ -10,8 +10,8 @@ export default function GameCard({ gameData }) {
             ? "https://image.tmdb.org/t/p/w154" + gameData.posterPath
             : NoPoster
         }
-      />{" "}
-      {gameData.title}
+      />
+      {" " + gameData.title}
     </div>
   );
 }
