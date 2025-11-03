@@ -27,13 +27,13 @@ export default function BrowseGames() {
   }, []); // Runs on mount
 
   return (
-    <>
+    <div class="container">
       <h1>Browse Games</h1>
       {statusMessage ? (
         <p>{statusMessage}</p>
       ) : (
         <GameCardList list={gameList} />
       )}
-    </>
+    </div>
   );
 }
