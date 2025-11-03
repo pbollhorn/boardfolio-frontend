@@ -7,31 +7,32 @@ export default function BrowseGames() {
 
   useEffect(() => {
     // Define an async function
-    async function fun() {
+    async function fetchGameList() {
       try {
         const response = await fetch(
           "https://movie.jcoder.dk/api/movies/search?title=critters"
         );
-        if (!response.ok) {
+        if (response.ok) {
+          const payload = await response.json();
+          setGameList(payload);
+          setStatusMessage(null);
+        } else {
           setStatusMessage(`HTTP ${response.status}: ${response.statusText}`);
         }
-        const payload = await response.json();
-        setGameList(payload);
-        setStatusMessage("");
       } catch (error) {
         setStatusMessage(`An error occurred:\n${error.message}`);
       }
     }
-    fun(); // Call the async function
+    fetchGameList(); // Call the async function
   }, []); // Runs on mount
 
   return (
     <>
       <h1>Browse Games</h1>
-      {statusMessage == "" ? (
-        <GameCardList list={gameList} />
-      ) : (
+      {statusMessage ? (
         <p>{statusMessage}</p>
+      ) : (
+        <GameCardList list={gameList} />
       )}
     </>
   );
