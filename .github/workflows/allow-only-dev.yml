@@ -1,0 +1,16 @@
+name: Allow merges only from dev
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure source branch is dev
+        if: github.head_ref != 'dev'
+        run: |
+          echo "❌ Pull requests to main must come from dev!"
+          exit 1
