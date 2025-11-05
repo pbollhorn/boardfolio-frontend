@@ -1,0 +1,42 @@
+name: Deploy Frontend to DigitalOcean
+
+on:
+  push:
+    branches: [main] # Trigger on direct pushes to the main branch
+  pull_request:
+    branches: [main] # Trigger when a pull request targeting main is merged/closed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # The type of runner for the job.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Checks out the repository under $GITHUB_WORKSPACE, so your workflow can access it.
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4 # Updated to use the latest version of the action
+        with:
+          node-version: "20.x" # Sets up Node.js version 20
+
+      - name: Install dependencies
+        run: npm install # Installs dependencies defined in package.json.
+
+      - name: Build the React project
+        run: npm run build # Runs the build script specified in package.json.
+
+      - name: Set up SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DO_SSH_KEY }} # The SSH private key stored in GitHub secrets.
+
+      - name: Sync files to DigitalOcean Droplet using rsync
+        run: |
+          # Define SSH connection info
+          SSH_USER="jetty"
+          DO_DROPLET_IP=${{ secrets.DO_DROPLET_IP }}
+          APP_NAME="boardfolio-frontend"
+          REMOTE_PATH="/home/jetty/deployment/site/$APP_NAME/"
+
+          # Sync build output to the Droplet using rsync
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ $SSH_USER@$DO_DROPLET_IP:$REMOTE_PATH
