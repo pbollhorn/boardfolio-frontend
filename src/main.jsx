@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 
-import BrowseGames from "./components/BrowseGames.jsx";
 import DummyFrontpage from "./pages/DummyFrontpage.jsx";
+import BrowseGames from "./pages/BrowseGames.jsx";
 import SearchGames from "./pages/SearchGames.jsx";
 
 const router = createBrowserRouter([
