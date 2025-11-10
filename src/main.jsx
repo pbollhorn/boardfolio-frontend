@@ -25,16 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/:username/mylists",
-        children: [
-          {
-            index: true, // matches "/:username/mylists" exactly
-            element: <MyList />,
-          },
-          {
-            path: ":listId", // matches "/:username/mylists/:listId"
-            element: <GameList />,
-          },
-        ],
+        element: <MyList />,
+      },
+      {
+        path: "/:username/mylists/:listID",
+        element: <GameList />,
       },
     ],
   },

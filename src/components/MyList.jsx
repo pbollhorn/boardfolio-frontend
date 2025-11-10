@@ -2,6 +2,7 @@ import GameList from "./GameList";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import { data } from "../resources/data.js";
 
 export default function MyList() {
   const username = "casper";
@@ -27,32 +28,7 @@ export default function MyList() {
   //     });
   //   }, []);
 
-  const userListOfGameLists = [
-    {
-      listID: 1,
-      name: "My Favorite RPGs PRIVATE",
-      customList: [
-        { gameID: 101, title: "The Witcher 3: Wild Hunt" },
-        { gameID: 102, title: "Skyrim" },
-        { gameID: 103, title: "Baldur's Gate 3" },
-      ],
-      createdDate: "2024-02-15T12:00:00",
-      isPublic: false,
-      user: { username: "casper" },
-    },
-    {
-      listID: 2,
-      name: "Boardgames PUBLIC",
-      customList: [
-        { gameID: 104, title: "Boardgame1" },
-        { gameID: 105, title: "Boardgame2" },
-        { gameID: 106, title: "Boardgame3" },
-      ],
-      createdDate: "2025-03-15T12:00:00",
-      isPublic: true,
-      user: { username: "casper" },
-    },
-  ];
+  const userListOfGameLists = data;
 
   if (!isLoggedIn) {
     return (
@@ -77,7 +53,12 @@ export default function MyList() {
           {userListOfGameLists.map((gameList) => (
             <tr key={gameList.listID}>
               <td>
-                <Link to={`${gameList.listID}`}>{gameList.name}</Link>
+                <Link
+                  to={`/${username}/mylists/${gameList.listID}`}
+                  state={{ list: gameList }}
+                >
+                  {gameList.name}
+                </Link>
               </td>
               <td>{gameList.createdDate}</td>
             </tr>
