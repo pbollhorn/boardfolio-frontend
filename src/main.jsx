@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import BrowseGames from "./components/BrowseGames.jsx";
 import MyList from "./components/MyList.jsx";
 import GameList from "./components/GameList.jsx";
+import CreateList from "./components/CreateList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/:username/mylists/:listID",
         element: <GameList />,
+      },
+      {
+        path: "/:username/mylists/newlist",
+        element: <CreateList />,
       },
     ],
   },
