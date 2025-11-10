@@ -9,16 +9,20 @@ import GameList from "./components/GameList.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    // errorElement: <ErrorPage />,
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "home", //TODO: rename this if needed
-        element: <App />, //TODO: create home component if needed, uses dummy component from App.jsx
+        path: "/",
+        element: <FrontPage />,
       },
       {
-        path: "browse", //TODO: rename this if needed
+        path: "browse",
         element: <BrowseGames />,
+      },
+      {
+        path: "search",
+        element: <SearchGames />,
       },
       {
         path: ":username/mylists", //TODO: rename 'mylist' if needed
