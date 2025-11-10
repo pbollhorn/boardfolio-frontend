@@ -4,7 +4,7 @@ export default function DummyFrontPage() {
   return (
     <div class="container">
       <h1>BoardFolio Dummy Frontpage</h1>
-      <p>Links for the routes:</p>
+      <p>Links to the routes:</p>
       <div>
         <Link to="/">Frontpage</Link>
         <br />
