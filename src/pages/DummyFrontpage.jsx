@@ -6,7 +6,7 @@ export default function DummyFrontPage() {
       <h1>BoardFolio Dummy Frontpage</h1>
       <p>Links for the routes:</p>
       <div>
-        <Link to="/">Home</Link>
+        <Link to="/">Frontpage</Link>
         <br />
         <Link to="/browse">Browse Games</Link>
         <br />
