@@ -1,11 +1,10 @@
-import BrowseGames from "./components/BrowseGames.jsx";
-import SearchGames from "./components/SearchGames.jsx";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
   return (
     <>
-      <SearchGames />
+      <Outlet />
     </>
   );
 }
