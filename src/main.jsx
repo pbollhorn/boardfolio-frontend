@@ -1,22 +1,23 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import "./index.css";
 import App from "./App.jsx";
+import "./index.css";
 
-import DummyFrontpage from "./pages/DummyFrontpage.jsx";
+// Pages
+import ErrorPage from "./pages/ErrorPage.jsx";
+import DummyFrontPage from "./pages/DummyFrontPage.jsx";
 import BrowseGames from "./pages/BrowseGames.jsx";
 import SearchGames from "./pages/SearchGames.jsx";
 
 const router = createBrowserRouter([
   {
     element: <App />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <DummyFrontpage />,
+        element: <DummyFrontPage />,
       },
       {
         path: "browse",
