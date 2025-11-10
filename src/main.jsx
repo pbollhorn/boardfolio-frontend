@@ -6,7 +6,7 @@ import "./index.css";
 
 // Pages
 import ErrorPage from "./pages/ErrorPage.jsx";
-import DummyFrontPage from "./pages/DummyFrontPage.jsx";
+import FrontPage from "./pages/FrontPage.jsx";
 import BrowseGames from "./pages/BrowseGames.jsx";
 import SearchGames from "./pages/SearchGames.jsx";
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <DummyFrontPage />,
+        element: <FrontPage />,
       },
       {
         path: "browse",
