@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.jsx";
 
 import BrowseGames from "./components/BrowseGames.jsx";
+import SearchGames from "./components/SearchGames.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <BrowseGames />,
+        element: <SearchGames />,
       },
     ],
   },
