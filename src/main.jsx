@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import BrowseGames from "./components/BrowseGames.jsx";
 import MyList from "./components/MyList.jsx";
+import GameList from "./components/GameList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
         element: <BrowseGames />,
       },
       {
-        path: ":username/mylists", //TODO: rename this if needed
+        path: ":username/mylists", //TODO: rename 'mylist' if needed
         element: <MyList />,
         children: [
           {
-            path: ":listID", //TODO: rename this if needed
+            path: ":listID",
             element: <GameList />,
           },
         ],

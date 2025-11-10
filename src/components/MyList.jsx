@@ -2,6 +2,7 @@ import GameList from "./GameList";
 import { useAuth } from "../context/AuthContext";
 import { fetchData } from "../util/fetchData";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function MyList() {
   const { isLoggedIn, username } = useAuth(); //TODO: we need login for this to work
@@ -47,7 +48,11 @@ export default function MyList() {
           <tbody>
             {userListOfGameLists.map((gameList) => (
               <tr key={gameList.listID}>
-                <td>{gameList.name}</td>
+                <strong>
+                  <Link to={gameList.listID}>
+                    <td>{gameList.name}</td>
+                  </Link>
+                </strong>
                 <td>{gameList.createdDate}</td>
               </tr>
             ))}
