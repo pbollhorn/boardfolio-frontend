@@ -1,0 +1,7 @@
+h1{
+    color: whitesmoke;
+}
+
+.fa-search::before {
+  content: "\f002";
+}
