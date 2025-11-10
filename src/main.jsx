@@ -9,12 +9,11 @@ import GameList from "./components/GameList.jsx";
 
 const router = createBrowserRouter([
   {
-    element: <App />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <FrontPage />,
+        // element: <FrontPage />,
       },
       {
         path: "browse",
@@ -22,14 +21,17 @@ const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <SearchGames />,
+        // element: <SearchGames />,
       },
       {
-        path: ":username/mylists", //TODO: rename 'mylist' if needed
-        element: <MyList />,
+        path: "/:username/mylists",
         children: [
           {
-            path: ":listID",
+            index: true, // matches "/:username/mylists" exactly
+            element: <MyList />,
+          },
+          {
+            path: ":listId", // matches "/:username/mylists/:listId"
             element: <GameList />,
           },
         ],
