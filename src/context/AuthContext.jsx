@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import facade from "../util/apiFacade";
+import facade from "../util/apiFacade.js";
 
 const AuthContext = createContext();
 
