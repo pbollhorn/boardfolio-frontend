@@ -63,6 +63,10 @@ export default function MyList() {
               <td>{gameList.createdDate}</td>
             </tr>
           ))}
+          {/* TODO: link to create list page */}
+          <Link  to="">
+          <button id="createList">Create List</button>
+          </Link>
         </tbody>
       </table>
 
