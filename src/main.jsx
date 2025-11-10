@@ -6,7 +6,8 @@ import "./index.css";
 import App from "./App.jsx";
 
 import BrowseGames from "./components/BrowseGames.jsx";
-import SearchGames from "./components/SearchGames.jsx";
+import DummyFrontpage from "./pages/DummyFrontpage.jsx";
+import SearchGames from "./pages/SearchGames.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <DummyFrontpage />,
+      },
+      {
+        path: "browse",
         element: <BrowseGames />,
       },
       {
@@ -24,11 +29,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-// createRoot(document.getElementById("root")).render(
-//   <StrictMode>
-//     <App />
-//   </StrictMode>
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
