@@ -8,11 +8,14 @@ import BrowseGames from "./components/BrowseGames.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
     // errorElement: <ErrorPage />,
     children: [
       {
-        path: "home",
+        path: "home", //TODO: rename this if needed 
+        element: <App />, //TODO: create home component if needed, uses dummy component from App.jsx
+      },
+      {
+        path: "browse", //TODO: rename this if needed 
         element: <BrowseGames />,
       },
     ],

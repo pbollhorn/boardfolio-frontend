@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <h1>Welcome to Boardfolio</h1>
-      {/* The Outlet renders the child route (e.g., BrowseGames) */}
+      {/* TODO: This is just a dummy for the temp. home page */}
       <Outlet />
     </div>
   );
