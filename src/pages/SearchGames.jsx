@@ -1,6 +1,5 @@
 import { useState } from "react";
 import GameCardList from "../components/GameList.jsx";
-import "../styles/SearchGames.module.css";
 
 export default function SearchGames() {
   const [gameList, setGameList] = useState([]);
@@ -16,12 +15,12 @@ export default function SearchGames() {
     setStatusMessage("Searching...");
     try {
       const response = await fetch(
-        `https://movie.jcoder.dk/api/movies/search?title=${encodeURIComponent(searchTerm)}`
+        `https://game.jcoder.dk/api/movies/search?title=${encodeURIComponent(searchTerm)}`
       );
       if (response.ok) {
         const payload = await response.json();
         setGameList(payload);
-        setStatusMessage(null);
+        setStatusMessage(payload.length === 0 ? "No games found." : null);
       } else {
         setStatusMessage(`HTTP ${response.status}: ${response.statusText}`);
       }
@@ -32,24 +31,25 @@ export default function SearchGames() {
 
   return (
     <div className="container">
+      <h1>Search for Games</h1>
+
       <div className="search-container">
-        <h1>Search For Games</h1>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search for games..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button type="button" onClick={fetchGameList}>
-          <i className="fa fa-search"></i> Search
+          Search
         </button>
       </div>
 
-      {/* Status message */}
-      {statusMessage && <p>{statusMessage}</p>}
-
-      {/* Display the fetched game list */}
-      {gameList.length > 0 && <GameCardList games={gameList} />}
+      {statusMessage ? (
+        <p>{statusMessage}</p>
+      ) : (
+        gameList.length > 0 && <GameCardList list={gameList} />
+      )}
     </div>
   );
 }
