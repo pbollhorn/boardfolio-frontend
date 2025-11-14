@@ -8,6 +8,7 @@ const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed UR
 const LOGIN_ENDPOINT = "/login";
 const REGISTER_ENDPOINT = "/register";
 const CREATE_LIST_ENDPOINT = "/list/add";
+const UPDATE_LIST_ENDPOINT = "/list/update";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
 
 async function handleHttpErrors(res) {
@@ -90,10 +91,8 @@ const logout = () => {
 
 const getUserLists = (username) => {
   const options = makeOptions("GET", true);
-  return fetch(BASE_URL + "/list/" + username).then(
-    handleHttpErrors
-  );
-}
+  return fetch(BASE_URL + "/list/" + username).then(handleHttpErrors);
+};
 
 const createList = (username, listname, isPublic) => {
   const options = makeOptions("POST", true, {
@@ -102,6 +101,20 @@ const createList = (username, listname, isPublic) => {
     user: { username },
   });
   return fetch(BASE_URL + CREATE_LIST_ENDPOINT, options).then(handleHttpErrors);
+};
+
+const updateList = (username, { gameList }, isPublic) => {
+  const options = makeOptions("PUT", true, {
+    listID: gameList.listID,
+    name: gameList.name,
+    customList: gameList.customList,
+    public: isPublic,
+    user: { username },
+  });
+  return fetch(
+    BASE_URL + UPDATE_LIST_ENDPOINT + "/" + gameList.listID,
+    options
+  ).then(handleHttpErrors);
 };
 
 const makeOptions = (method, addToken, body) => {
@@ -132,6 +145,7 @@ const facade = {
   getUserId,
   getUserLists,
   createList,
+  updateList,
   makeOptions,
 };
 
