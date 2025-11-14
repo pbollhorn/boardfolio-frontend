@@ -12,7 +12,6 @@ export default function SearchGames() {
     event.preventDefault();
 
     const searchTerm = searchTermRef.current.value;
-
     if (!searchTerm) {
       setStatusMessage("Please enter a search term");
       return;
@@ -42,19 +41,19 @@ export default function SearchGames() {
       <h1>Search for Games</h1>
 
       <form onSubmit={fetchGameList}>
-        <div className="search-container">
+        {/* <div className="search-container"> */}
+        <div className="input-group w-75">
           <input
             type="search"
             ref={searchTermRef}
             placeholder="Search for games..."
             onChange={fetchGameList}
           />
-          <button type="submit">
+          <button type="submit" className="btn btn-primary">
             <span className="material-symbols-outlined">search</span>
           </button>
         </div>
       </form>
-
       {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
   );
