@@ -3,14 +3,18 @@ import GameList from "../components/GameList.jsx";
 
 export default function SearchGames() {
   const [gameList, setGameList] = useState([]);
-  const [statusMessage, setStatusMessage] = useState(null);
+  const [statusMessage, setStatusMessage] = useState(
+    "Please enter a search term"
+  );
   const searchTermRef = useRef(null);
 
-  async function fetchGameList() {
+  async function fetchGameList(event) {
+    event.preventDefault();
+
     const searchTerm = searchTermRef.current.value;
 
     if (!searchTerm) {
-      setStatusMessage("Please enter a search term.");
+      setStatusMessage("Please enter a search term");
       return;
     }
 
@@ -37,17 +41,19 @@ export default function SearchGames() {
     <div className="container">
       <h1>Search for Games</h1>
 
-      <div className="search-container">
-        <input
-          type="search"
-          ref={searchTermRef}
-          placeholder="Search for games..."
-          onChange={fetchGameList}
-        />
-        <button>
-          <span className="material-symbols-outlined">search</span>
-        </button>
-      </div>
+      <form onSubmit={fetchGameList}>
+        <div className="search-container">
+          <input
+            type="search"
+            ref={searchTermRef}
+            placeholder="Search for games..."
+            onChange={fetchGameList}
+          />
+          <button type="submit">
+            <span className="material-symbols-outlined">search</span>
+          </button>
+        </div>
+      </form>
 
       {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
