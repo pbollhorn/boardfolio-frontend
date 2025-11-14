@@ -9,7 +9,7 @@ export default function MyList() {
   const isLoggedIn = true;
 
   //   TODO: insert URL for fetching GameLists for a user here!
-  //   const URL = "INSERT URL HERE" + username;
+  //   const URL = "INSERT_URL_HERE" + username;
 
   // fetches the user's list of gameLists
   //   function getUserListOfGameLists(callback) {
