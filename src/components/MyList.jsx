@@ -3,10 +3,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { data } from "../resources/data.js";
+import { fetchData } from "../util/fetchData";
+import { useAuth } from "../context/AuthContext.jsx";
 
 export default function MyList() {
   const username = "casper";
   const isLoggedIn = true;
+
+  // const [isLoggedIn, username] = useAuth();
+  // const [games, setGames] = useState([]);
 
   //   TODO: insert URL for fetching GameLists for a user here!
   //   const URL = "INSERT_URL_HERE" + username;
