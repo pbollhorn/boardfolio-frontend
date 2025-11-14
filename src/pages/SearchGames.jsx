@@ -41,7 +41,7 @@ export default function SearchGames() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button type="button" onClick={fetchGameList}>
-          Search
+          <span className="material-symbols-outlined">search</span>
         </button>
       </div>
 
