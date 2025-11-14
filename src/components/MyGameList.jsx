@@ -5,15 +5,18 @@ import facade from "../util/apiFacade.js";
 export default function MyGameList() {
   const location = useLocation();
   const initialList = location.state?.list?.customList || [];
+
+  // Initialize state from location.state
   const [games, setGames] = useState(initialList);
   const [listName, setListName] = useState(location.state?.list?.name || "");
   const [isPublic, setIsPublic] = useState(
-    location.state?.list?.isPublic || false
+    location.state?.list?.public ?? false
   );
+
   const [error, setError] = useState(null);
 
   const listID = location.state?.list?.listID;
-  const username = location.state?.list?.user?.username; // adjust if different
+  const username = location.state?.list?.user?.username;
 
   const removeGame = (gameID) => {
     setGames((prevGames) => prevGames.filter((game) => game.gameId !== gameID));
@@ -22,9 +25,8 @@ export default function MyGameList() {
   const updateList = async (e) => {
     e.preventDefault();
     try {
-      // Map games to the backend format
       const mappedGames = games.map((game) => ({
-        bgg_API_ID: game.gameId, // backend expects this
+        bgg_API_ID: game.gameId,
         title: game.title,
         description: game.description,
         minNoOfPlayers: game.minNoOfPlayers,
@@ -37,7 +39,7 @@ export default function MyGameList() {
       }));
 
       const updatedListData = {
-        listID: listID,
+        listID,
         name: listName,
         customList: mappedGames,
       };
