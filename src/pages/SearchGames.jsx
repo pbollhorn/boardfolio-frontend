@@ -17,7 +17,6 @@ export default function SearchGames() {
       return;
     }
 
-    setStatusMessage("Searching...");
     try {
       const response = await fetch(
         `https://movie.jcoder.dk/api/movies/search?title=${encodeURIComponent(
