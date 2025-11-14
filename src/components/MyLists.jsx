@@ -16,7 +16,6 @@ export default function MyList() {
   const [games, setGames] = useState([]);
 
   const dev = true;
-
   const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
 
   const GAMES_URL = `/list/${username}`;
@@ -34,8 +33,6 @@ export default function MyList() {
     }
   }, [username]);
 
-  // const userListOfGameLists = data;
-
   // helper method to format java localdatetime (integer array) to DD/MM/YEAR HOUR:MINUTE String
   function formatArrayDate(arr) {
     const [year, month, day, hour, minute] = arr;
@@ -48,10 +45,11 @@ export default function MyList() {
     )}`;
   }
 
+  // Shows message if user is not logged in
   if (!isLoggedIn) {
     return (
       <div>
-        <h2>You must first log in to see your user page!</h2>
+        <h2>You must first log in to see your user lists!</h2>
       </div>
     );
   }
