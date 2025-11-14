@@ -1,16 +1,24 @@
+//TODO: remember to install package: npm install jwt-decode
 import { jwtDecode } from "jwt-decode";
 
 //TODO: add deployed API URLs
-// const BASE_URL = "";
-// const LOGIN_ENDPOINT = "";
-// const REGISTER_ENDPOINT = "";
-// const CREATE_LIST_ENDPOINT = "";
+const dev = true;
 
-function handleHttpErrors(res) {
+const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
+const LOGIN_ENDPOINT = "/login";
+const REGISTER_ENDPOINT = "/register";
+const CREATE_LIST_ENDPOINT = "/list/add";
+const GAMES_DEV = "/games/dev"; // populates the database with test data
+
+async function handleHttpErrors(res) {
   if (!res.ok) {
-    return Promise.reject({ status: res.status, fullError: res.json() });
+    const errMsg = await res.text();
+    throw { status: res.status, fullError: errMsg };
   }
-  return res.json();
+
+  // If there is no content, don't parse JSON
+  const text = await res.text();
+  return text ? JSON.parse(text) : {};
 }
 
 const getUsername = () => {
@@ -80,15 +88,13 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
-const createList = (username, listname) => {
+const createList = (username, listname, isPublic) => {
   const options = makeOptions("POST", true, {
-    username: username,
-    listname: listname,
+    name: listname,
+    public: isPublic,
+    user: { username },
   });
-  return fetch(
-    BASE_URL + CREATE_LIST_ENDPOINT + "/" + username + "/" + listname,
-    options
-  ).then(handleHttpErrors);
+  return fetch(BASE_URL + CREATE_LIST_ENDPOINT, options).then(handleHttpErrors);
 };
 
 const makeOptions = (method, addToken, body) => {

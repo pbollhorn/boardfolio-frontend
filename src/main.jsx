@@ -4,9 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import BrowseGames from "./components/BrowseGames.jsx";
-import MyList from "./components/MyList.jsx";
+import MyList from "./components/MyLists.jsx";
 import GameList from "./components/GameList.jsx";
 import CreateList from "./components/CreateList.jsx";
+import MyGameList from "./components/MyGameList.jsx"
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:username/mylists/:listID",
-        element: <GameList />,
+        element: <MyGameList />,
       },
       {
         path: "/:username/mylists/newlist",

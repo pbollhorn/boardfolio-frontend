@@ -3,17 +3,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateList() {
-  const [listname, setListname] = useState("");
+  const [name, setListname] = useState("");
+  const [isPublic, setPublic] = useState("");
   const [error, setError] = useState("");
-  const username = facade.loggedIn ? facade.getUsername() : null;
+  // const username = facade.loggedIn ? facade.getUsername() : null;
   const navigate = useNavigate();
+
+  //TODO: hardcoded variables for testing
+  const user = "testUser";
 
   const handleNewList = async (e) => {
     e.preventDefault();
     try {
-      await facade.post(username, listname);
+      await facade.createList(user, name, isPublic);
       //TODO: navigate to page where you can add games to a list
-      navigate("/search");
+      navigate(`/${user}/mylists`);
       // Optionally, use a toast instead of alert:
       // setSuccess("Registration successful!")  // if you want a green bubble
       alert("New list created, you can now add games to it!");
@@ -22,6 +26,12 @@ export default function CreateList() {
       console.error("Creation list failed:", err);
       setError("Failed creating list: " + err.message);
     }
+
+    console.log("Sending body:", {
+      user: user,
+      name: name,
+      isPublic,
+    });
   };
 
   return (
@@ -33,19 +43,22 @@ export default function CreateList() {
           id="listname"
           name="listname"
           placeholder="Write list name here"
-          value={listname}
+          value={name}
           onChange={(e) => setListname(e.target.value)}
         />
         <br />
-        <input type="checkbox" id="public" value="public" />
-        <label for="html">Public</label>
+        <input
+          type="checkbox"
+          id="public"
+          checked={isPublic}
+          onChange={(e) => setPublic(e.target.checked)}
+        />
+        <label htmlFor="public">Public</label>
         <br />
         <button type="submit" id="bt-createList">
           Create List
         </button>
       </form>
-      {/* TODO: show error in a better way*/}
-      <h3>{error}</h3>
     </div>
   );
 }

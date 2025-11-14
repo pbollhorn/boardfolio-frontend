@@ -1,10 +1,9 @@
-import GameList from "./GameList";
+import GameList from "./GameList.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { data } from "../resources/data.js";
-import { fetchData } from "../util/fetchData";
-import facade from "../util/apiFacade";
+import { fetchData } from "../util/fetchData.js";
+import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 
@@ -24,9 +23,6 @@ export default function MyList() {
 
   const URL = BASE_URL + GAMES_URL;
 
-  //   TODO: insert URL for fetching GameLists for a user here!
-  //   const URL = "INSERT_URL_HERE" + username;
-
   // fetches the user's list of gameLists
   function getUserListOfGameLists(callback) {
     fetchData(URL, callback);
@@ -40,6 +36,18 @@ export default function MyList() {
 
   // const userListOfGameLists = data;
 
+  // helper method to format java localdatetime (integer array) to DD/MM/YEAR HOUR:MINUTE String
+  function formatArrayDate(arr) {
+    const [year, month, day, hour, minute] = arr;
+    return `${String(day).padStart(2, "0")}-${String(month).padStart(
+      2,
+      "0"
+    )}-${year} ${String(hour).padStart(2, "0")}:${String(minute).padStart(
+      2,
+      "0"
+    )}`;
+  }
+
   if (!isLoggedIn) {
     return (
       <div>
@@ -50,7 +58,7 @@ export default function MyList() {
 
   return (
     <div className="container">
-      <h1>Welcome {username}!</h1>
+      <h1>{username}'s lists</h1>
       <br />
       <table>
         <thead>
@@ -70,7 +78,7 @@ export default function MyList() {
                   {gameList.name}
                 </Link>
               </td>
-              <td>{gameList.createdDate}</td>
+              <td>{formatArrayDate(gameList.createdDate)}</td>
             </tr>
           ))}
         </tbody>
