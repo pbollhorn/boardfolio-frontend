@@ -1,26 +1,32 @@
-import { useState } from "react";
-import GameCardList from "../components/GameList.jsx";
+import { useState, useRef } from "react";
+import GameList from "../components/GameList.jsx";
 
 export default function SearchGames() {
   const [gameList, setGameList] = useState([]);
-  const [statusMessage, setStatusMessage] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [statusMessage, setStatusMessage] = useState(
+    "Please enter a search term"
+  );
+  const searchTermRef = useRef(null);
 
-  async function fetchGameList() {
+  async function fetchGameList(event) {
+    event.preventDefault();
+
+    const searchTerm = searchTermRef.current.value;
     if (!searchTerm) {
-      setStatusMessage("Please enter a search term.");
+      setStatusMessage("Please enter a search term");
       return;
     }
 
-    setStatusMessage("Searching...");
     try {
       const response = await fetch(
-        `https://movie.jcoder.dk/api/movies/search?title=${encodeURIComponent(searchTerm)}`
+        `https://movie.jcoder.dk/api/movies/search?title=${encodeURIComponent(
+          searchTerm
+        )}`
       );
       if (response.ok) {
         const payload = await response.json();
         setGameList(payload);
-        setStatusMessage(payload.length === 0 ? "No games found." : null);
+        setStatusMessage(null);
       } else {
         setStatusMessage(`HTTP ${response.status}: ${response.statusText}`);
       }
@@ -33,23 +39,19 @@ export default function SearchGames() {
     <div className="container">
       <h1>Search for Games</h1>
 
-      <div className="search-container">
+      <form onSubmit={fetchGameList} className="input-group w-75 mb-2">
         <input
-          type="text"
+          type="search"
+          ref={searchTermRef}
           placeholder="Search for games..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={fetchGameList}
+          className="form-control"
         />
-        <button type="button" onClick={fetchGameList}>
+        <button type="submit" className="btn btn-primary">
           <span className="material-symbols-outlined">search</span>
         </button>
-      </div>
-
-      {statusMessage ? (
-        <p>{statusMessage}</p>
-      ) : (
-        gameList.length > 0 && <GameCardList list={gameList} />
-      )}
+      </form>
+      {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
   );
 }

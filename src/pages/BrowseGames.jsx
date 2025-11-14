@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GameCardList from "../components/GameList.jsx";
+import GameList from "../components/GameList.jsx";
 
 export default function BrowseGames() {
   const [gameList, setGameList] = useState([]);
@@ -29,11 +29,7 @@ export default function BrowseGames() {
   return (
     <div class="container">
       <h1>Browse Games</h1>
-      {statusMessage ? (
-        <p>{statusMessage}</p>
-      ) : (
-        <GameCardList list={gameList} />
-      )}
+      {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
   );
 }
