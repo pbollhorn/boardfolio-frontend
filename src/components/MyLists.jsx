@@ -54,33 +54,67 @@ export default function MyList() {
     );
   }
 
+    // Separate collection from custom lists
+  const sortedGames = [...games].sort((a, b) => a.listID - b.listID);
+  const collection = sortedGames[0]; // the lowest ID is the collection
+  const customLists = sortedGames.slice(1); // the rest are custom lists
+
   return (
     <div className="container">
-      <h1>{username}'s lists</h1>
+       <h1>My Collection</h1>
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th>List Name</th>
-            <th>Created Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {games.map((gameList) => (
-            <tr key={gameList.listID}>
+      {collection ? (
+        <table>
+          <tbody>
+            <tr key={collection.listID}>
               <td>
                 <Link
-                  to={`/${username}/mylists/${gameList.listID}`}
-                  state={{ list: gameList }}
+                  to={`/${username}/mylists/${collection.listID}`}
+                  state={{ list: collection }}
                 >
-                  {gameList.name}
+                  {collection.name}
                 </Link>
               </td>
-              <td>{formatArrayDate(gameList.createdDate)}</td>
+              {/* TODO: collections should have a timestamp? */}
+              {/* <td>{formatArrayDate(collection.createdDate)}</td> */}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      ) : (
+        <p>No collection found</p>
+      )}
+
+
+      <h1>{username}'s Custom Lists</h1>
+      <br />
+      {customLists.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>List Name</th>
+              <th>Created Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {customLists.map((gameList) => (
+              <tr key={gameList.listID}>
+                <td>
+                  <Link
+                    to={`/${username}/mylists/${gameList.listID}`}
+                    state={{ list: gameList }}
+                  >
+                    {gameList.name}
+                  </Link>
+                </td>
+                <td>{formatArrayDate(gameList.createdDate)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No custom lists yet</p>
+      )}
+
       <br />
       <Link to={`/${username}/mylists/newlist`}>
         <button id="createList">Create List</button>
