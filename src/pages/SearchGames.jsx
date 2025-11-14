@@ -40,13 +40,13 @@ export default function SearchGames() {
       <h1>Search for Games</h1>
 
       <form onSubmit={fetchGameList}>
-        {/* <div className="search-container"> */}
-        <div className="input-group w-75">
+        <div className="input-group w-75 mb-2">
           <input
             type="search"
             ref={searchTermRef}
             placeholder="Search for games..."
             onChange={fetchGameList}
+            className="form-control"
           />
           <button type="submit" className="btn btn-primary">
             <span className="material-symbols-outlined">search</span>
