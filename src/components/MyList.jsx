@@ -4,36 +4,41 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { data } from "../resources/data.js";
 import { fetchData } from "../util/fetchData";
+import facade from "../util/apiFacade";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useEffect } from "react";
 
 export default function MyList() {
-  const username = "casper";
+  //TODO: hardcoded variables for testing
+  const username = "testUser";
   const isLoggedIn = true;
 
   // const [isLoggedIn, username] = useAuth();
-  // const [games, setGames] = useState([]);
+  const [games, setGames] = useState([]);
+
+  const dev = true;
+
+  const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
+
+  const GAMES_URL = `/list/${username}`;
+
+  const URL = BASE_URL + GAMES_URL;
 
   //   TODO: insert URL for fetching GameLists for a user here!
   //   const URL = "INSERT_URL_HERE" + username;
 
   // fetches the user's list of gameLists
-  //   function getUserListOfGameLists(callback) {
-  //     fetchData(URL, callback);
-  //   }
+  function getUserListOfGameLists(callback) {
+    fetchData(URL, callback);
+  }
 
-  //   useEffect(() => {
-  //     if (username) {
-  //       getUserListOfGameLists(setUserListOfGameLists);
-  //     }
-  //   }, [username]);
+  useEffect(() => {
+    if (username) {
+      getUserListOfGameLists(setGames);
+    }
+  }, [username]);
 
-  //   useEffect(() => {
-  //     getUserListOfGameLists((data) => {
-  //       setUserListOfGameLists(data);
-  //     });
-  //   }, []);
-
-  const userListOfGameLists = data;
+  // const userListOfGameLists = data;
 
   if (!isLoggedIn) {
     return (
@@ -55,7 +60,7 @@ export default function MyList() {
           </tr>
         </thead>
         <tbody>
-          {userListOfGameLists.map((gameList) => (
+          {games.map((gameList) => (
             <tr key={gameList.listID}>
               <td>
                 <Link
@@ -71,9 +76,9 @@ export default function MyList() {
         </tbody>
       </table>
       <br />
-        <Link to={`/${username}/mylists/newlist`}>
-          <button id="createList">Create List</button>
-        </Link>
+      <Link to={`/${username}/mylists/newlist`}>
+        <button id="createList">Create List</button>
+      </Link>
 
       <Outlet />
     </div>
