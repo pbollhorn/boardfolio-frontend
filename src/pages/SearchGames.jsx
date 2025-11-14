@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
-import GameCardList from "../components/GameList.jsx";
+import GameList from "../components/GameList.jsx";
 
 export default function SearchGames() {
   const [gameList, setGameList] = useState([]);
   const [statusMessage, setStatusMessage] = useState(null);
-  // const [searchTerm, setSearchTerm] = useState("");
   const searchTermRef = useRef(null);
 
   async function fetchGameList(event) {
@@ -12,10 +11,10 @@ export default function SearchGames() {
 
     const searchTerm = searchTermRef.current.value;
 
-    // if (!searchTerm) {
-    //   setStatusMessage("Please enter a search term.");
-    //   return;
-    // }
+    if (!searchTerm) {
+      setStatusMessage("Please enter a search term.");
+      return;
+    }
 
     setStatusMessage("Searching...");
     try {
@@ -44,24 +43,17 @@ export default function SearchGames() {
         <form onSubmit={fetchGameList}>
           <input
             type="search"
-            placeholder="Search for games..."
-            // value={searchTerm}
-            // onChange={(e) => setSearchTerm(e.target.value)}
-            onChange={fetchGameList}
             ref={searchTermRef}
+            placeholder="Search for games..."
+            onChange={fetchGameList}
           />
-          {/* <button type="submit"> */}
           <button>
             <span className="material-symbols-outlined">search</span>
           </button>
         </form>
       </div>
 
-      {statusMessage ? (
-        <p>{statusMessage}</p>
-      ) : (
-        gameList.length > 0 && <GameCardList list={gameList} />
-      )}
+      {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
   );
 }
