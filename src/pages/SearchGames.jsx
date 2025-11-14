@@ -6,9 +6,7 @@ export default function SearchGames() {
   const [statusMessage, setStatusMessage] = useState(null);
   const searchTermRef = useRef(null);
 
-  async function fetchGameList(event) {
-    event.preventDefault();
-
+  async function fetchGameList() {
     const searchTerm = searchTermRef.current.value;
 
     if (!searchTerm) {
@@ -40,17 +38,15 @@ export default function SearchGames() {
       <h1>Search for Games</h1>
 
       <div className="search-container">
-        <form onSubmit={fetchGameList}>
-          <input
-            type="search"
-            ref={searchTermRef}
-            placeholder="Search for games..."
-            onChange={fetchGameList}
-          />
-          <button>
-            <span className="material-symbols-outlined">search</span>
-          </button>
-        </form>
+        <input
+          type="search"
+          ref={searchTermRef}
+          placeholder="Search for games..."
+          onChange={fetchGameList}
+        />
+        <button>
+          <span className="material-symbols-outlined">search</span>
+        </button>
       </div>
 
       {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
