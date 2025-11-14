@@ -88,6 +88,13 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
+const getUserLists = (username) => {
+  const options = makeOptions("GET", true);
+  return fetch(BASE_URL + "/list/" + username).then(
+    handleHttpErrors
+  );
+}
+
 const createList = (username, listname, isPublic) => {
   const options = makeOptions("POST", true, {
     name: listname,
@@ -123,6 +130,7 @@ const facade = {
   logout,
   getUsername,
   getUserId,
+  getUserLists,
   createList,
   makeOptions,
 };
