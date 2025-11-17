@@ -105,8 +105,6 @@ const createList = (username, listname, isPublic) => {
   return fetch(BASE_URL + CREATE_LIST_ENDPOINT, options).then(handleHttpErrors);
 };
 
-
-//TODO refactor
 const updateList = (username, {gameList}, isPublic) => {
   const options = makeOptions("PUT", true, {
     listID: gameList.listID,

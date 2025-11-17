@@ -6,6 +6,7 @@ export default function GameList() {
   const location = useLocation();
   const initialList = location.state?.list;
   const { user, listID } = useParams();
+  const [hasChanges, setHasChanges] = useState(false);
 
   const [listName, setListName] = useState(initialList?.name || "");
   const [gameList, setGameList] = useState(() =>
@@ -16,7 +17,6 @@ export default function GameList() {
   const [loading, setLoading] = useState(false);
   const [fullList, setFullList] = useState(initialList);
 
-  // Fetch list from backend if not provided via state
   useEffect(() => {
     if (!initialList && listID && user) {
       setLoading(true);
@@ -44,7 +44,6 @@ export default function GameList() {
     return <p>List not found</p>;
   }
 
-  // Helper function to clean games for backend
   const cleanGamesForBackend = (games) => {
     return games.map((game) => ({
       title: game.title,
@@ -56,32 +55,37 @@ export default function GameList() {
       genres: game.genres,
       image: game.image,
       thumbnail: game.thumbnail,
-      bgg_API_ID: game.gameId || game.bgg_API_ID
+      bgg_API_ID: game.gameId,
     }));
   };
 
   const removeGame = (gameId) => {
     const updated = gameList.filter((game) => game.gameId !== gameId);
     setGameList(updated);
+    setHasChanges(true);
   };
 
-  const updateList = async (e) => {
-    e.preventDefault();
-    try {
-      const cleanedGames = cleanGamesForBackend(gameList);
-      const updatedListData = {
-        listID: listID,
-        name: listName,
-        customList: cleanedGames,
-        public: isPublic
-      };
-      await facade.updateList(user, { gameList: updatedListData });
-      alert("List updated successfully!");
-    } catch (err) {
-      console.error("error updating list", err);
-      setError("error updating list: " + err.message);
-    }
-  };
+const updateList = async (e) => {
+  e.preventDefault();
+  console.log("updateList blev kaldt!");
+  try {
+    const cleanedGames = cleanGamesForBackend(gameList);
+    const updatedListData = {
+      listID: listID,
+      name: listName,
+      customList: cleanedGames,
+      public: isPublic
+    };
+    
+    console.log("Sender til backend:", updatedListData); // DEBUG
+    
+    await facade.updateList(user, { gameList: updatedListData }, isPublic);
+    setHasChanges(false);
+  } catch (err) {
+    console.error("error updating list", err);
+    setError("error updating list: " + err.message);
+  }
+};
 
   return (
     <form onSubmit={updateList}>
@@ -112,10 +116,7 @@ export default function GameList() {
               </td>
               <td>{game.title}</td>
               <td>
-                <button
-                  type="button"
-                  onClick={() => removeGame(game.gameId)}
-                >
+                <button type="button" onClick={() => removeGame(game.gameId)}>
                   remove
                 </button>
               </td>
@@ -135,7 +136,9 @@ export default function GameList() {
       </div>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
-
+      {hasChanges && (
+        <p style={{ color: "orange" }}>Changes</p>
+      )}
       <button type="submit" id="btn-submit">
         submit change
       </button>
