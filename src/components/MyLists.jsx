@@ -59,7 +59,7 @@ export default function MyList() {
       <LoginForm />
       <h1>My Collection</h1>
       <br />
-      {collection && collection.length > 0 ? (
+      {collection ? (
         <table>
           <tbody>
             <tr key={collection.listID}>
