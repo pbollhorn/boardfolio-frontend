@@ -7,7 +7,10 @@ import BrowseGames from "./components/BrowseGames.jsx";
 import MyList from "./components/MyLists.jsx";
 import GameList from "./components/GameList.jsx";
 import CreateList from "./components/CreateList.jsx";
-import MyGameList from "./components/MyGameList.jsx"
+import MyGameList from "./components/MyGameList.jsx";
+import Register from "./components/Register.jsx";
+import Frontpage from "./components/Frontpage.jsx";
+import { AuthProvider } from "./context/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +18,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        // element: <FrontPage />,
+        element: <Frontpage />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "browse",
@@ -43,6 +50,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
