@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/useAuth";
 import { Link } from "react-router-dom";
-import Register from "./Register";
 
 export default function LoginForm() {
   const { isLoggedIn, username, login, logout } = useAuth();
