@@ -1,16 +1,15 @@
-import GameList from "./GameList.jsx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { fetchData } from "../util/fetchData.js";
-import facade from "../util/apiFacade.js";
-import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
+import { useAuth } from "../context/useAuth.js";
+import { useParams } from "react-router-dom";
+import LoginForm from "./LoginForm.jsx";
 
 export default function MyList() {
-  //TODO: hardcoded variables for testing
-  const username = "testUser";
-  const isLoggedIn = true;
+  const { isLoggedIn, username } = useAuth();
+  const { username: routeUsername } = useParams();
 
   // const [isLoggedIn, username] = useAuth();
   const [games, setGames] = useState([]);
@@ -50,20 +49,37 @@ export default function MyList() {
     return (
       <div>
         <h2>You must first log in to see your user lists!</h2>
+        <LoginForm />
       </div>
     );
   }
 
-    // Separate collection from custom lists
+  // if username in URL doesn't match username from token
+  // meaning you're logged in as one user trying to view another's page, not allowed!
+  //TODO: are usernames uniqueness case sensitive? I've set it as non-casesensitive for now
+  if (username.toLowerCase() !== routeUsername.toLowerCase()) {
+    return (
+      <div>
+        <h2
+        // className= TODO: Styling
+        >
+          You do not have permission to view this page!
+        </h2>
+      </div>
+    );
+  }
+
+  // Separate collection from custom lists
   const sortedGames = [...games].sort((a, b) => a.listID - b.listID);
   const collection = sortedGames[0]; // the lowest ID is the collection
   const customLists = sortedGames.slice(1); // the rest are custom lists
 
   return (
     <div className="container">
-       <h1>My Collection</h1>
+      <LoginForm />
+      <h1>My Collection</h1>
       <br />
-      {collection ? (
+      {collection && collection.length > 0 ? (
         <table>
           <tbody>
             <tr key={collection.listID}>
@@ -81,13 +97,12 @@ export default function MyList() {
           </tbody>
         </table>
       ) : (
-        <p>No collection found</p>
+        <p>Looks like your collection is empty!</p>
       )}
-
 
       <h1>{username}'s Custom Lists</h1>
       <br />
-      {customLists.length > 0 ? (
+      {customLists ? (
         <table>
           <thead>
             <tr>
