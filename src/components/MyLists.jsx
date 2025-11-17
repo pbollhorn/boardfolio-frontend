@@ -1,48 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { fetchData } from "../util/fetchData.js";
 import { useEffect } from "react";
 import { useAuth } from "../context/useAuth.js";
 import { useParams } from "react-router-dom";
 import LoginForm from "./LoginForm.jsx";
+import facade from "../util/apiFacade.js";
+import { formatArrayDate } from "../util/formatingDate.js";
 
 export default function MyList() {
   const { isLoggedIn, username } = useAuth();
   const { username: routeUsername } = useParams();
-
-  // const [isLoggedIn, username] = useAuth();
   const [games, setGames] = useState([]);
 
-  const dev = true;
-  const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
-
-  const GAMES_URL = `/list/${username}`;
-
-  const URL = BASE_URL + GAMES_URL;
-
   // fetches the user's list of gameLists
-  function getUserListOfGameLists(callback) {
-    fetchData(URL, callback);
+  function getUserListOfGameLists(username) {
+    facade.getUserLists(username).then(setGames);
   }
 
   useEffect(() => {
     if (username) {
-      getUserListOfGameLists(setGames);
+      getUserListOfGameLists(username);
     }
   }, [username]);
-
-  // helper method to format java localdatetime (integer array) to DD/MM/YEAR HOUR:MINUTE String
-  function formatArrayDate(arr) {
-    const [year, month, day, hour, minute] = arr;
-    return `${String(day).padStart(2, "0")}-${String(month).padStart(
-      2,
-      "0"
-    )}-${year} ${String(hour).padStart(2, "0")}:${String(minute).padStart(
-      2,
-      "0"
-    )}`;
-  }
 
   // Shows message if user is not logged in
   if (!isLoggedIn) {
