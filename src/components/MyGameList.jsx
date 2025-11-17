@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import facade from "../util/apiFacade.js";
+import { useAuth } from "../context/useAuth.js";
+import { useParams } from "react-router-dom";
+import LoginForm from "./LoginForm.jsx";
 
 export default function MyGameList() {
   const location = useLocation();
   const initialList = location.state?.list?.customList || [];
+  const { isLoggedIn, username } = useAuth();
+
+  const { username: routeUsername } = useParams();
 
   // Initialize state from location.state
   const [games, setGames] = useState(initialList);
@@ -16,7 +22,6 @@ export default function MyGameList() {
   const [error, setError] = useState(null);
 
   const listID = location.state?.list?.listID;
-  const username = location.state?.list?.user?.username;
 
   const removeGame = (gameID) => {
     setGames((prevGames) => prevGames.filter((game) => game.gameId !== gameID));
@@ -56,43 +61,100 @@ export default function MyGameList() {
     }
   };
 
+  const safeUser = username?.toLowerCase();
+  const safeRouteUser = routeUsername?.toLowerCase();
+
+  // If username from token doesn't matches URL then show list or list is private
+  // Then it doesn't show the list
+  if ((!isLoggedIn || safeUser !== safeRouteUser) && !isPublic) {
+    return (
+      <div>
+        <LoginForm />
+        <h2
+        // className= TODO: Styling
+        >
+          This list is private!
+        </h2>
+      </div>
+    );
+  }
+
+  // edit mode for owner of list
+  if (isLoggedIn && safeUser == safeRouteUser) {
+    return (
+      <div>
+        <LoginForm />
+        <h2>Edit List</h2>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
+        <div>
+          <label>
+            List Name:{" "}
+            <input
+              type="text"
+              placeholder={listName}
+              value={listName}
+              onChange={(e) => setListName(e.target.value)}
+            />
+          </label>
+        </div>
+
+        <ul>
+          {games ? (
+            <div>
+              <p>This list is empty!</p>
+            </div>
+          ) : (
+            <div>
+              {games.map((game) => (
+                <li key={game.gameId}>
+                  {game.title}
+                  <button onClick={() => removeGame(game.gameId)}>
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </div>
+          )}
+        </ul>
+
+        <div>
+          <label>
+            Public:{" "}
+            <input
+              type="checkbox"
+              checked={isPublic}
+              onChange={(e) => setIsPublic(e.target.checked)}
+            />
+          </label>
+        </div>
+
+        <button onClick={updateList}>Submit Updated List</button>
+      </div>
+    );
+  }
+
+  // if not owner of list, but it's public
   return (
     <div>
-      <h2>Edit List</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <div>
-        <label>
-          List Name:{" "}
-          <input
-            type="text"
-            value={listName}
-            onChange={(e) => setListName(e.target.value)}
-          />
-        </label>
-      </div>
-
+      <LoginForm />
+      <h2>{routeUsername}{"'s "}{listName}</h2>
       <ul>
-        {games.map((game) => (
-          <li key={game.gameId}>
-            {game.title}
-            <button onClick={() => removeGame(game.gameId)}>Remove</button>
-          </li>
-        ))}
+        {games ? (
+          <div>
+            <p>This list is empty!</p>
+          </div>
+        ) : (
+          <div>
+            {games.map((game) => (
+              <li key={game.gameId}>
+                {game.title}
+                <button onClick={() => removeGame(game.gameId)}>Remove</button>
+              </li>
+            ))}
+          </div>
+        )}
       </ul>
-
-      <div>
-        <label>
-          Public:{" "}
-          <input
-            type="checkbox"
-            checked={isPublic}
-            onChange={(e) => setIsPublic(e.target.checked)}
-          />
-        </label>
-      </div>
-
-      <button onClick={updateList}>Submit Updated List</button>
     </div>
   );
 }
