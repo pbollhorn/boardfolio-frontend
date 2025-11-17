@@ -11,7 +11,7 @@ const CREATE_LIST_ENDPOINT = "/list/add";
 const UPDATE_LIST_ENDPOINT = "/list/update";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
 const USER_GAMES_ENDPOINT = "/list";
-const DELETE_LIST_ENDPOINT = "list/remove";
+const DELETE_LIST_ENDPOINT = "/list/remove";
 
 async function handleHttpErrors(res) {
   if (!res.ok) {
@@ -122,13 +122,18 @@ const updateList = (username, { gameList }, isPublic) => {
 };
 
 const removeList = (listID) => {
-  const options = makeOptions("DELETE", true, {
-    listID: listID,
-  });
-  return fetch(BASE_URL + DELETE_LIST_ENDPOINT + "/" + listID, options).then(
-    handleHttpErrors
-  );
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${getToken()}`, // if your backend requires auth
+    },
+  };
+
+  return fetch(`${BASE_URL}${DELETE_LIST_ENDPOINT}/${listID}`, options)
+    .then(handleHttpErrors);
 };
+
+
 
 const makeOptions = (method, addToken, body) => {
   var opts = {
