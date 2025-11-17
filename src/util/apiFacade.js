@@ -5,10 +5,8 @@ import { jwtDecode } from "jwt-decode";
 const dev = true;
 
 const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
-const LOGIN_ENDPOINT = "/login";
-const REGISTER_ENDPOINT = "/register";
-const CREATE_LIST_ENDPOINT = "/list/add";
-const UPDATE_LIST_ENDPOINT = "/list/update";
+const LOGIN_ENDPOINT = "/auth/login";
+const REGISTER_ENDPOINT = "/auth/register";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
 
 async function handleHttpErrors(res) {
@@ -91,7 +89,7 @@ const logout = () => {
 
 const getUserLists = (username) => {
   const options = makeOptions("GET", true);
-  return fetch(BASE_URL + "/list/" + username).then(
+  return fetch(BASE_URL + "/list/user/" + username).then(
     handleHttpErrors
   );
 }
@@ -102,7 +100,7 @@ const createList = (username, listname, isPublic) => {
     public: isPublic,
     user: { username },
   });
-  return fetch(BASE_URL + CREATE_LIST_ENDPOINT, options).then(handleHttpErrors);
+  return fetch(BASE_URL + "/list/add", options).then(handleHttpErrors);
 };
 
 const updateList = (username, {gameList}, isPublic) => {
@@ -113,13 +111,12 @@ const updateList = (username, {gameList}, isPublic) => {
     public: isPublic,
     user: { username },
   });
-  return fetch(BASE_URL + UPDATE_LIST_ENDPOINT +"/"+ gameList.listID, options).then(handleHttpErrors);
+  return fetch(BASE_URL + "/list/update/" + gameList.listID, options).then(handleHttpErrors);
 };
 
-const getListByID = (username, listID) => {
-  return fetch(`/api/lists/${username}/${listID}`, makeOptions("GET", true))
-    .then(handleHttpErrors)
-    .then((res) => res.json());
+const getListByID = (listID) => {
+  return fetch(BASE_URL + "/list/" + listID, makeOptions("GET", true))
+    .then(handleHttpErrors);
 };
 
 const makeOptions = (method, addToken, body) => {

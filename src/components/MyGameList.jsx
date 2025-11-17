@@ -46,6 +46,7 @@ export default function GameList() {
 
   const cleanGamesForBackend = (games) => {
     return games.map((game) => ({
+      game_id: game.gameId,
       title: game.title,
       description: game.description,
       minAge: game.minAge,
@@ -55,7 +56,6 @@ export default function GameList() {
       genres: game.genres,
       image: game.image,
       thumbnail: game.thumbnail,
-      bgg_API_ID: game.gameId,
     }));
   };
 
@@ -65,27 +65,33 @@ export default function GameList() {
     setHasChanges(true);
   };
 
-const updateList = async (e) => {
-  e.preventDefault();
-  console.log("updateList blev kaldt!");
-  try {
-    const cleanedGames = cleanGamesForBackend(gameList);
-    const updatedListData = {
-      listID: listID,
-      name: listName,
-      customList: cleanedGames,
-      public: isPublic
-    };
-    
-    console.log("Sender til backend:", updatedListData); // DEBUG
-    
-    await facade.updateList(user, { gameList: updatedListData }, isPublic);
-    setHasChanges(false);
-  } catch (err) {
-    console.error("error updating list", err);
-    setError("error updating list: " + err.message);
-  }
-};
+  const updateList = async (e) => {
+    e.preventDefault();
+    try {
+      const cleanedGames = cleanGamesForBackend(gameList);
+      const updatedListData = {
+        listID: listID,
+        name: listName,
+        customList: cleanedGames,
+        public: isPublic,
+      };
+
+      await facade.updateList(user, { gameList: updatedListData }, isPublic);
+
+      const refreshedList = await facade.getListByID(listID);
+      setFullList(refreshedList);
+      setListName(refreshedList.name);
+      setGameList(
+        refreshedList.customList ? Array.from(refreshedList.customList) : []
+      );
+      setIsPublic(refreshedList.public || false);
+
+      setHasChanges(false);
+    } catch (err) {
+      console.error("error updating list", err);
+      setError("error updating list: " + err.message);
+    }
+  };
 
   return (
     <form onSubmit={updateList}>
@@ -136,9 +142,7 @@ const updateList = async (e) => {
       </div>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {hasChanges && (
-        <p style={{ color: "orange" }}>Changes</p>
-      )}
+      {hasChanges && <p style={{ color: "orange" }}>Changes</p>}
       <button type="submit" id="btn-submit">
         submit change
       </button>
