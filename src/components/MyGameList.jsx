@@ -5,6 +5,7 @@ import { useAuth } from "../context/useAuth.js";
 import { useParams } from "react-router-dom";
 import LoginForm from "./LoginForm.jsx";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function MyGameList() {
   const location = useLocation();
@@ -20,6 +21,25 @@ export default function MyGameList() {
   const [isPublic, setIsPublic] = useState(
     location.state?.list?.public ?? false
   );
+
+  // Separate collection from custom lists
+  const sortedGames = [...games].sort((a, b) => a.listID - b.listID);
+  const collection = sortedGames[0]; // the lowest ID is the collection
+
+  // console.log(`${JSON.stringify(collection)}`);
+  // console.log(`${JSON.stringify(games)}`);
+  // console.log(`${JSON.stringify(initialList)}`);
+
+  // fetches the user's list of gameLists
+  function getUserListOfGameLists(username) {
+    facade.getUserLists(username).then(setGames);
+  }
+
+  useEffect(() => {
+    if (username) {
+      getUserListOfGameLists(username);
+    }
+  }, [username]);
 
   const [error, setError] = useState(null);
 
@@ -141,7 +161,10 @@ export default function MyGameList() {
         </div>
 
         <button onClick={updateList}>Submit Updated List</button>
-        <button onClick={() => deleteList(listID)}>Delete</button>
+        {/* TODO: don't show this for collections! */}
+        {collection && listID !== collection.listID && (
+          <button onClick={() => deleteList(listID)}>Delete</button>
+        )}
       </div>
     );
   }
@@ -158,16 +181,16 @@ export default function MyGameList() {
       <ul>
         {games ? (
           <div>
-            <p>This list is empty!</p>
-          </div>
-        ) : (
-          <div>
             {games.map((game) => (
               <li key={game.gameId}>
                 {game.title}
                 <button onClick={() => removeGame(game.gameId)}>Remove</button>
               </li>
             ))}
+          </div>
+        ) : (
+          <div>
+            <p>This list is empty!</p>
           </div>
         )}
       </ul>
