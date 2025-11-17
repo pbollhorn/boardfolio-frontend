@@ -5,8 +5,8 @@ import { jwtDecode } from "jwt-decode";
 const dev = true;
 
 const BASE_URL = dev ? "http://localhost:7070/api" : ""; //TODO: set deployed URL here
-const LOGIN_ENDPOINT = "/login";
-const REGISTER_ENDPOINT = "/register";
+const LOGIN_ENDPOINT = "/auth/login";
+const REGISTER_ENDPOINT = "/auth/register";
 const CREATE_LIST_ENDPOINT = "/list/add";
 const UPDATE_LIST_ENDPOINT = "/list/update";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
@@ -89,6 +89,7 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
+//TODO: used fetchData.js instead, write it here or delete
 const getUserLists = (username) => {
   const options = makeOptions("GET", true);
   return fetch(BASE_URL + "/list/" + username).then(handleHttpErrors);
