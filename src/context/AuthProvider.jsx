@@ -1,7 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import AuthContext from "./AuthContext";
 import facade from "../util/apiFacade.js";
-
-const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(facade.loggedIn());
@@ -19,14 +18,11 @@ export const AuthProvider = ({ children }) => {
     setUsername("");
   };
 
-  // Check token on mount
   useEffect(() => {
     if (facade.loggedIn()) {
       const token = facade.getToken();
-      const isExpired = isTokenExpired(token);
-      if (isExpired) {
-        logout();
-      } else {
+      if (isTokenExpired(token)) logout();
+      else {
         setIsLoggedIn(true);
         setUsername(facade.getUsername());
       }
@@ -40,18 +36,11 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
-
-// --- Helper to decode and check token expiry ---
 function isTokenExpired(token) {
   try {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const payload = JSON.parse(atob(base64));
-    const now = Math.floor(Date.now() / 1000);
-    return payload.exp < now;
-  } catch (err) {
-    console.error("Failed to decode token:", err);
-    return true; // Treat as expired if decoding fails
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp < Math.floor(Date.now() / 1000);
+  } catch {
+    return true;
   }
 }
