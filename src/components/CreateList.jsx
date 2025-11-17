@@ -5,7 +5,7 @@ import { useAuth } from "../context/useAuth.js";
 import LoginForm from "./LoginForm.jsx";
 
 export default function CreateList() {
-  const [name, setListname] = useState("");
+  const [listName, setListname] = useState("");
   const { isLoggedIn, username } = useAuth();
   const [isPublic, setPublic] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +14,7 @@ export default function CreateList() {
   const handleNewList = async (e) => {
     e.preventDefault();
     try {
-      await facade.createList(username, name, isPublic);
+      await facade.createList(username, listName, isPublic);
       //TODO: navigate to page where you can add games to a list
       navigate(`/${username}/mylists`);
       // Optionally, use a toast instead of alert:
@@ -25,12 +25,6 @@ export default function CreateList() {
       console.error("Creation list failed:", err);
       setError("Failed creating list: " + err.message);
     }
-
-    console.log("Sending body:", {
-      user: username,
-      name: name,
-      isPublic,
-    });
   };
 
   // If not logged in, show loginform
@@ -53,7 +47,7 @@ export default function CreateList() {
           id="listname"
           name="listname"
           placeholder="Write list name here"
-          value={name}
+          value={listName}
           onChange={(e) => setListname(e.target.value)}
         />
         <br />
