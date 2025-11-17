@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/useAuth";
 import { Link } from "react-router-dom";
+import Register from "./Register";
 
 export default function LoginForm() {
   const { isLoggedIn, username, login, logout } = useAuth();
@@ -21,9 +22,8 @@ export default function LoginForm() {
 
   return (
     <div>
-      {errorMessage &&
-        // TODO: handle errors better!
-        alert(`Wrong username or password!`)}
+        {/* TODO: handle errors better! */}
+      {errorMessage && <p className="error">{errorMessage}</p>}
       {!isLoggedIn ? (
         // If not logged in show loginform
         <form onSubmit={handleLogin}>
