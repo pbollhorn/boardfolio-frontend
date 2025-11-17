@@ -11,7 +11,7 @@ const CREATE_LIST_ENDPOINT = "/list/add";
 const UPDATE_LIST_ENDPOINT = "/list/update";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
 const USER_GAMES_ENDPOINT = "/list";
-const DELETE_LIST_ENDPOINT = "/remove";
+const DELETE_LIST_ENDPOINT = "list/remove";
 
 async function handleHttpErrors(res) {
   if (!res.ok) {

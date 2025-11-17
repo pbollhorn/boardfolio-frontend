@@ -4,11 +4,13 @@ import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
 import { useParams } from "react-router-dom";
 import LoginForm from "./LoginForm.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function MyGameList() {
   const location = useLocation();
   const initialList = location.state?.list?.customList || [];
   const { isLoggedIn, username } = useAuth();
+  const navigate = useNavigate();
 
   const { username: routeUsername } = useParams();
 
@@ -60,6 +62,15 @@ export default function MyGameList() {
       setError("Error updating list: " + err.message);
     }
   };
+
+  function deleteList(listID) {
+    // opens a window that requires confirmation
+    const ok = window.confirm("Are you sure you want to delete this list?");
+    if (!ok) return; // user canceled
+
+    facade.removeList(listID);
+    navigate(`/${username}/mylists`);
+  }
 
   const safeUser = username?.toLowerCase();
   const safeRouteUser = routeUsername?.toLowerCase();
@@ -130,6 +141,7 @@ export default function MyGameList() {
         </div>
 
         <button onClick={updateList}>Submit Updated List</button>
+        <button onClick={() => deleteList(listID)}>Delete</button>
       </div>
     );
   }
@@ -138,7 +150,11 @@ export default function MyGameList() {
   return (
     <div>
       <LoginForm />
-      <h2>{routeUsername}{"'s "}{listName}</h2>
+      <h2>
+        {routeUsername}
+        {"'s "}
+        {listName}
+      </h2>
       <ul>
         {games ? (
           <div>
