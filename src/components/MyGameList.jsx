@@ -1,54 +1,65 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
-import { useParams } from "react-router-dom";
 import LoginForm from "./LoginForm.jsx";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function MyGameList() {
   const location = useLocation();
-  const initialList = location.state?.list?.customList || [];
-  const { isLoggedIn, username } = useAuth();
   const navigate = useNavigate();
-
   const { username: routeUsername } = useParams();
+  const { isLoggedIn, username: authUsername, username } = useAuth();
 
-  // Initialize state from location.state
-  const [games, setGames] = useState(initialList);
-  const [listName, setListName] = useState(location.state?.list?.name || "");
-  const [isPublic, setIsPublic] = useState(
-    location.state?.list?.public ?? false
-  );
+  const listID = location.state?.list?.listID;
 
-  // Separate collection from custom lists
-  const sortedGames = [...games].sort((a, b) => a.listID - b.listID);
-  const collection = sortedGames[0]; // the lowest ID is the collection
+  // Local state
+  const [games, setGames] = useState([]);
+  const [listName, setListName] = useState("");
+  const [isPublic, setIsPublic] = useState(false);
+  const [error, setError] = useState(null);
 
-  // console.log(`${JSON.stringify(collection)}`);
-  // console.log(`${JSON.stringify(games)}`);
-  // console.log(`${JSON.stringify(initialList)}`);
+  const safeAuthUser = authUsername?.toLowerCase();
+  const safeRouteUser = routeUsername?.toLowerCase();
+
+  // Fetch the list from location.state or backend
+  useEffect(() => {
+    if (listID) {
+      // Prefer location.state if available
+      const listFromState = location.state?.list;
+      if (listFromState) {
+        setGames(listFromState.customList || []);
+        setListName(listFromState.name || "");
+        setIsPublic(listFromState.public ?? false);
+      } else {
+        // Fallback: fetch from backend
+        facade.getListById(listID).then((list) => {
+          setGames(list.customList || []);
+          setListName(list.name || "");
+          setIsPublic(list.public ?? false);
+        });
+      }
+    }
+  }, [listID, location.state]);
+
+  // Remove a game
+  const removeGame = (gameId) => {
+    setGames((prevGames) => prevGames.filter((game) => game.gameId !== gameId));
+  };
+
+  const [customLists, setCustomLists] = useState([]);
 
   // fetches the user's list of gameLists
   function getUserListOfGameLists(username) {
-    facade.getUserLists(username).then(setGames);
+    facade.getUserLists(username).then(setCustomLists);
   }
 
-  useEffect(() => {
+    useEffect(() => {
     if (username) {
       getUserListOfGameLists(username);
     }
   }, [username]);
 
-  const [error, setError] = useState(null);
-
-  const listID = location.state?.list?.listID;
-
-  const removeGame = (gameID) => {
-    setGames((prevGames) => prevGames.filter((game) => game.gameId !== gameID));
-  };
-
+  // Update the list
   const updateList = async (e) => {
     e.preventDefault();
     try {
@@ -72,7 +83,7 @@ export default function MyGameList() {
       };
 
       await facade.updateList(
-        username,
+        authUsername,
         { gameList: updatedListData },
         isPublic
       );
@@ -83,35 +94,31 @@ export default function MyGameList() {
     }
   };
 
-  function deleteList(listID) {
-    // opens a window that requires confirmation
+  // Separate collection from custom lists
+  const sortedGames = [...customLists].sort((a, b) => a.listID - b.listID);
+  const collection = sortedGames[0]; // the lowest ID is the collection
+
+  // Delete the list
+  const deleteList = () => {
     const ok = window.confirm("Are you sure you want to delete this list?");
-    if (!ok) return; // user canceled
+    if (!ok) return;
 
     facade.removeList(listID);
-    navigate(`/${username}/mylists`);
-  }
+    navigate(`/${authUsername}/mylists`);
+  };
 
-  const safeUser = username?.toLowerCase();
-  const safeRouteUser = routeUsername?.toLowerCase();
-
-  // If username from token doesn't matches URL then show list or list is private
-  // Then it doesn't show the list
-  if ((!isLoggedIn || safeUser !== safeRouteUser) && !isPublic) {
+  // Access control: show login if not owner and list is private
+  if ((!isLoggedIn || safeAuthUser !== safeRouteUser) && !isPublic) {
     return (
       <div>
         <LoginForm />
-        <h2
-        // className= TODO: Styling
-        >
-          This list is private!
-        </h2>
+        <h2>This list is private!</h2>
       </div>
     );
   }
 
-  // edit mode for owner of list
-  if (isLoggedIn && safeUser == safeRouteUser) {
+  // Owner edit mode
+  if (isLoggedIn && safeAuthUser === safeRouteUser) {
     return (
       <div>
         <LoginForm />
@@ -123,31 +130,11 @@ export default function MyGameList() {
             List Name:{" "}
             <input
               type="text"
-              placeholder={listName}
               value={listName}
               onChange={(e) => setListName(e.target.value)}
             />
           </label>
         </div>
-
-        <ul>
-          {games ? (
-            <div>
-              <p>This list is empty!</p>
-            </div>
-          ) : (
-            <div>
-              {games.map((game) => (
-                <li key={game.gameId}>
-                  {game.title}
-                  <button onClick={() => removeGame(game.gameId)}>
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </div>
-          )}
-        </ul>
 
         <div>
           <label>
@@ -160,6 +147,19 @@ export default function MyGameList() {
           </label>
         </div>
 
+        <ul>
+          {games.length === 0 ? (
+            <p>This list is empty!</p>
+          ) : (
+            games.map((game) => (
+              <li key={game.gameId}>
+                {game.title}{" "}
+                <button onClick={() => removeGame(game.gameId)}>Remove</button>
+              </li>
+            ))
+          )}
+        </ul>
+
         <button onClick={updateList}>Submit Updated List</button>
         {collection && listID !== collection.listID && (
           <button onClick={() => deleteList(listID)}>Delete</button>
@@ -168,29 +168,19 @@ export default function MyGameList() {
     );
   }
 
-  // if not owner of list, but it's public
+  // Viewer mode for public list
   return (
     <div>
       <LoginForm />
       <h2>
-        {routeUsername}
-        {"'s "}
-        {listName}
+        {routeUsername}'s {listName}
       </h2>
+
       <ul>
-        {games ? (
-          <div>
-            {games.map((game) => (
-              <li key={game.gameId}>
-                {game.title}
-                <button onClick={() => removeGame(game.gameId)}>Remove</button>
-              </li>
-            ))}
-          </div>
+        {games.length === 0 ? (
+          <p>This list is empty!</p>
         ) : (
-          <div>
-            <p>This list is empty!</p>
-          </div>
+          games.map((game) => <li key={game.gameId}>{game.title}</li>)
         )}
       </ul>
     </div>
