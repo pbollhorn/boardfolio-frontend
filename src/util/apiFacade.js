@@ -10,6 +10,7 @@ const REGISTER_ENDPOINT = "/auth/register";
 const CREATE_LIST_ENDPOINT = "/list/add";
 const UPDATE_LIST_ENDPOINT = "/list/update";
 const GAMES_DEV = "/games/dev"; // populates the database with test data
+const USER_GAMES_ENDPOINT = "/list";
 
 async function handleHttpErrors(res) {
   if (!res.ok) {
@@ -89,10 +90,11 @@ const logout = () => {
   localStorage.removeItem("jwtToken");
 };
 
-//TODO: used fetchData.js instead, write it here or delete
 const getUserLists = (username) => {
   const options = makeOptions("GET", true);
-  return fetch(BASE_URL + "/list/" + username).then(handleHttpErrors);
+  return fetch(BASE_URL + USER_GAMES_ENDPOINT + "/" + username, options).then(
+    handleHttpErrors
+  );
 };
 
 const createList = (username, listname, isPublic) => {
