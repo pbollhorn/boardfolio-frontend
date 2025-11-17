@@ -53,7 +53,7 @@ export default function MyGameList() {
     facade.getUserLists(username).then(setCustomLists);
   }
 
-    useEffect(() => {
+  useEffect(() => {
     if (username) {
       getUserListOfGameLists(username);
     }
@@ -152,10 +152,15 @@ export default function MyGameList() {
             <p>This list is empty!</p>
           ) : (
             games.map((game) => (
-              <li key={game.gameId}>
-                {game.title}{" "}
-                <button onClick={() => removeGame(game.gameId)}>Remove</button>
-              </li>
+              <div>
+                <li key={game.gameId}>
+                  <img src={game.thumbnailURL} alt={game.title} />
+                  {game.title}{" "}
+                  <button onClick={() => removeGame(game.gameId)}>
+                    Remove
+                  </button>
+                </li>
+              </div>
             ))
           )}
         </ul>
