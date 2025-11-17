@@ -161,7 +161,6 @@ export default function MyGameList() {
         </div>
 
         <button onClick={updateList}>Submit Updated List</button>
-        {/* TODO: don't show this for collections! */}
         {collection && listID !== collection.listID && (
           <button onClick={() => deleteList(listID)}>Delete</button>
         )}
