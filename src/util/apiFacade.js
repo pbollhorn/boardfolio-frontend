@@ -93,9 +93,10 @@ const logout = () => {
 
 const getUserLists = (username) => {
   const options = makeOptions("GET", true);
-  return fetch(BASE_URL + USER_GAMES_ENDPOINT + "/" + username, options).then(
-    handleHttpErrors
-  );
+  return fetch(
+    BASE_URL + USER_GAMES_ENDPOINT + "/user/" + username,
+    options
+  ).then(handleHttpErrors);
 };
 
 const createList = (username, listname, isPublic) => {
@@ -125,15 +126,14 @@ const removeList = (listID) => {
   const options = {
     method: "DELETE",
     headers: {
-      "Authorization": `Bearer ${getToken()}`, // if your backend requires auth
+      Authorization: `Bearer ${getToken()}`, // if your backend requires auth
     },
   };
 
-  return fetch(`${BASE_URL}${DELETE_LIST_ENDPOINT}/${listID}`, options)
-    .then(handleHttpErrors);
+  return fetch(`${BASE_URL}${DELETE_LIST_ENDPOINT}/${listID}`, options).then(
+    handleHttpErrors
+  );
 };
-
-
 
 const makeOptions = (method, addToken, body) => {
   var opts = {
