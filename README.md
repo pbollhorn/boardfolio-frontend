@@ -32,6 +32,15 @@ Setup instructions on your local computer:
 4. Run the development server: `npm run dev`
 5. View the React app in your browser (should be at http://localhost:5173/)
 
+## Running JSON mock server
+
+If you are developing a frontend feature that makes requests to a backend endpoint
+which is not up and running yet, you can use the JSON mock server.
+
+- Run the mock server using this command: `npm run backend`
+- The mock server should be running now on http://localhost:4000/
+- If not, try this command: `npm install`
+
 ## Technologies Used
 
 - React 19
