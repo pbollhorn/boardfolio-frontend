@@ -1,0 +1,109 @@
+{
+  "books": [
+    {
+      "id": 101,
+      "title": "sed",
+      "author": "Clementina Jast",
+      "rating": 3.6,
+      "year_published": 1977
+    },
+    {
+      "id": 102,
+      "title": "aut officiis saepe",
+      "author": "Clementina Jast",
+      "rating": 0.55,
+      "year_published": 1876
+    },
+    {
+      "id": 103,
+      "title": "sed voluptatem praesentium",
+      "author": "Clementina Jast",
+      "rating": 4.6,
+      "year_published": 1762
+    },
+    {
+      "id": 104,
+      "title": "sint",
+      "author": "Clementina Jast",
+      "rating": 0.95,
+      "year_published": 1909
+    },
+    {
+      "id": 105,
+      "title": "dolores soluta quis corporis pariatur",
+      "author": "Camron Kreiger",
+      "rating": 0.3,
+      "year_published": 1707
+    },
+    {
+      "id": 106,
+      "title": "illo vero amet",
+      "author": "Dameon Wunsch",
+      "rating": 3.85,
+      "year_published": 1796
+    },
+    {
+      "id": 107,
+      "title": "itaque suscipit beatae atque ut",
+      "author": "Diamond Hoeger",
+      "rating": 0.25,
+      "year_published": 1850
+    },
+    {
+      "id": 108,
+      "title": "ex porro",
+      "author": "Jett Balistreri",
+      "rating": 4.3,
+      "year_published": 1743
+    },
+    {
+      "id": 109,
+      "title": "labore dolorem",
+      "author": "Amir Schamberger",
+      "rating": 4.2,
+      "year_published": 2002
+    },
+    {
+      "id": 110,
+      "title": "animi est nesciunt perferendis ut",
+      "author": "Buddy Sipes",
+      "rating": 1.1,
+      "year_published": 1756
+    },
+    {
+      "id": 111,
+      "title": "quidem aut ut error",
+      "author": "Destany Reichert",
+      "rating": 0.3,
+      "year_published": 1785
+    },
+    {
+      "id": 112,
+      "title": "quasi rerum unde velit itaque qui",
+      "author": "Abby Nader",
+      "rating": 0.65,
+      "year_published": 1996
+    },
+    {
+      "id": 113,
+      "title": "enim ea non eum autem",
+      "author": "Nichole Kling",
+      "rating": 4,
+      "year_published": 1794
+    },
+    {
+      "id": 114,
+      "title": "suscipit et",
+      "author": "Brent Bashirian",
+      "rating": 2.3,
+      "year_published": 1790
+    },
+    {
+      "id": 115,
+      "title": "ex qui molestiae aut",
+      "author": "Connor Fritsch",
+      "rating": 0.3,
+      "year_published": 1835
+    }
+  ]
+}
