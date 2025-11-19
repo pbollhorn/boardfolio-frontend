@@ -37,9 +37,10 @@ Setup instructions on your local computer:
 If you are developing a frontend feature that makes requests to a backend endpoint
 which is not up and running yet, you can use the JSON mock server.
 
-- Run the mock server using this command: `npm run backend`
-- The mock server should be running now on http://localhost:4000/
-- If not, try this command: `npm install`
+1. Run this command to make sure dependencies are installed: `npm install`
+2. Run the mock server using this command: `npm run backend`
+3. The mock server should now be running on http://localhost:4000/
+
 
 ## Technologies Used
 
