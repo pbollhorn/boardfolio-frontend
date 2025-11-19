@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "backend": "json-server -p 4000 --watch booksdb.json"
+    "backend": "json-server -p 4000 --watch mock-db.json"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -25,6 +25,7 @@
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
     "vite": "^7.1.7",
+    "casual": "^1.6.2",
     "json-server": "^1.0.0-beta.3"
   }
 }
