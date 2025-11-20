@@ -2,9 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import BrowseGames from "./components/BrowseGames.jsx";
-import MyList from "./components/MyLists.jsx";
-import CreateList from "./components/CreateList.jsx";
+import BrowseGames from "./pages/BrowseGames.jsx";
+import MyList from "./pages/MyLists.jsx";
+import CreateList from "./pages/CreateList.jsx";
 import MyGameList from "./components/MyGameList.jsx";
 import Register from "./pages/Register.jsx";
 import Frontpage from "./pages/Frontpage.jsx";
@@ -13,7 +13,7 @@ import { AuthProvider } from "./context/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
