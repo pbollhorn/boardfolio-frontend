@@ -32,6 +32,21 @@ Setup instructions on your local computer:
 4. Run the development server: `npm run dev`
 5. View the React app in your browser (should be at http://localhost:5173/)
 
+## Running JSON mock server
+
+If you are developing a frontend feature that makes requests to a backend endpoint
+which is not up and running yet, you can try using the JSON mock server instead.
+
+1. Run this command to make sure dependencies are installed: `npm install`
+2. Run the mock server using this command: `npm run backend`
+3. The mock server should now be running on http://localhost:4000/boardgames
+
+The mock server serves the content of the file `mock-db.json` as a REST API.
+You can look in `mock-db.json` to see its data.
+
+Link to documentation for JSON-Server:
+https://github.com/typicode/json-server?tab=readme-ov-file#json-server
+
 ## Technologies Used
 
 - React 19
