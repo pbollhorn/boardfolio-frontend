@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuth } from "../context/useAuth.js";
 import { useParams } from "react-router-dom";
-import LoginForm from "./LoginForm.jsx";
+import LoginForm from "../components/LoginForm.jsx";
 import facade from "../util/apiFacade.js";
 import { formatArrayDate } from "../util/formatingDate.js";
 

@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import ErrorPage from "./pages/ErrorPage.jsx";
 import BrowseGames from "./pages/BrowseGames.jsx";
 import MyList from "./pages/MyLists.jsx";
 import CreateList from "./pages/CreateList.jsx";
