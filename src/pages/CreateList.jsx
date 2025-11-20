@@ -2,7 +2,7 @@ import facade from "../util/apiFacade.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "./LoginForm.jsx";
+import LoginForm from "../components/LoginForm.jsx";
 
 export default function CreateList() {
   const [listName, setListname] = useState("");
