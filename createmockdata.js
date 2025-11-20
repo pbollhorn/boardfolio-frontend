@@ -1,18 +1,15 @@
 import casual from "casual";
 
-// TODO: Remember to put "json-server" under "devDependencies" instead of "dependencies"
-// TODO: Remember to say in README to run npm install
-
 // This script creates mock data to be put in mock-db.json
 // Instructions for use:
 // 1. Run this script using Node: node createmockdata.js
 // 2. Copy paste the output from terminal into mock-db.json
 
-// Create an object for config file
-var db = { boardgames: [] };
+// Create an object to hold the mock data
+const db = { boardgames: [] };
 
-for (var i = 101; i <= 115; i++) {
-  var game = {};
+for (let i = 1; i <= 10; i++) {
+  const game = {};
   game.id = i;
 
   // Create a random 1-6 word title
@@ -32,5 +29,6 @@ for (var i = 101; i <= 115; i++) {
 
   db.boardgames.push(game);
 }
-// console.log(JSON.stringify(db));
+
+// Write mock data to terminal
 console.log(JSON.stringify(db, null, 2));

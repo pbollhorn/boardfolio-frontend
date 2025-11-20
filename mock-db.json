@@ -1,109 +1,129 @@
 {
-  "books": [
+  "boardgames": [
     {
-      "id": 101,
-      "title": "sed",
-      "author": "Clementina Jast",
-      "rating": 3.6,
-      "year_published": 1977
+      "gameId": 1,
+      "title": "Die Macher",
+      "description": "Die Macher is a game about seven sequential political races in different regions of Germany.\n            Players are in charge of national political parties, and must manage limited resources to help their party\n            to victory. The winning party will have the most victory points after all the regional elections. There are\n            four different ways of scoring victory points. First, each regional election can supply one to eighty\n            victory points, depending on the size of the region and how well your party does in it. Second, if a party\n            wins a regional election and has some media influence in the region, then the party will receive some\n            media-control victory points. Third, each party has a national party membership which will grow as the game\n            progresses and this will supply a fair number of victory points. Lastly, parties score some victory points\n            if their party platform matches the national opinions at the end of the game.&#10;&#10;The 1986\n            edition featured four parties from the old West Germany and supported 3-4 players. The 1997 edition supports\n            up to five players in the re-united Germany and updated several features of the rules as well. The 2006\n            edition also supports up to five players and adds a shorter five-round variant and additional rules updates\n            by the original designer.&#10;&#10;\n        ",
+      "minAge": 14,
+      "minNoOfPlayers": 3,
+      "maxNoOfPlayers": 5,
+      "releaseYear": 1986,
+      "imageURL": "\n            https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__original/img/yR0aoBVKNrAmmCuBeSzQnMflLYg=/0x0/filters:format(jpeg)/pic4718279.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/rpwCZAjYLD940NWwP3SRoA__small/img/YT6svCVsWqLrDitcMEtyazVktbQ=/fit-in/200x150/filters:strip_icc()/pic4718279.jpg\n        ",
+      "genres": ["ECONOMIC", "NEGOTIATION", "POLITICAL"]
     },
     {
-      "id": 102,
-      "title": "aut officiis saepe",
-      "author": "Clementina Jast",
-      "rating": 0.55,
-      "year_published": 1876
+      "gameId": 2,
+      "title": "Dragonmaster",
+      "description": "Dragonmaster is a trick-taking card game based on an older game called Coup d'&#195;&#137;tat.\n            Each player is given a supply of plastic gems, which represent points. Each player will get to be the dealer\n            for five different hands, with slightly different goals for each hand. After all cards have been dealt out,\n            the dealer decides which hand best suits his or her current cards, and the other players are penalized\n            points (in the form of crystals) for taking certain tricks or cards. For instance, if &quot;first&quot;\n            or &quot;last&quot; is called, then a player is penalized for taking the first or last tricks. All\n            players will get a chance to be dealer for five hands, but other players can steal this opportunity by\n            taking all of the tricks during certain hands. At the end, the biggest pile of gems wins the game.&#10;&#10;Jewel\n            contents:&#10;&#10;10 clear (2 extra)&#10;14 green (2 extra)&#10;22 red (2 extra)&#10;22\n            blue (2 extra)&#10;&#10;\n        ",
+      "minAge": 12,
+      "minNoOfPlayers": 3,
+      "maxNoOfPlayers": 4,
+      "releaseYear": 1981,
+      "imageURL": "\n            https://cf.geekdo-images.com/oQYhaJx5Lg3KcGis2reuWQ__original/img/owag4VgJDPyPt2ciYB9Hc5l4GnQ=/0x0/filters:format(jpeg)/pic4001505.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/oQYhaJx5Lg3KcGis2reuWQ__small/img/3bIZnNfVM1viwH9A9d2Rrip1Y80=/fit-in/200x150/filters:strip_icc()/pic4001505.jpg\n        ",
+      "genres": ["CARD_GAME", "FANTASY"]
     },
     {
-      "id": 103,
-      "title": "sed voluptatem praesentium",
-      "author": "Clementina Jast",
-      "rating": 4.6,
-      "year_published": 1762
+      "gameId": 3,
+      "title": "Samurai",
+      "description": "Samurai is set in medieval Japan. Players compete to gain the favor of three factions: samurai,\n            peasants, and priests, which are represented by helmet, rice paddy, and Buddha figures scattered about the\n            board, which features the islands of Japan. The competition is waged through the use of hexagonal tiles,\n            each of which help curry favor of one of the three factions &mdash; or all three at once! Players can\n            make lightning-quick strikes with horseback ronin and ships or approach their conquests more methodically.\n            As each figure (helmets, rice paddies, and Buddhas) is surrounded, it is awarded to the player who has\n            gained the most favor with the corresponding group.&#10;&#10;Gameplay continues until all the\n            symbols of one type have been removed from the board or four figures have been removed from play due to a\n            tie for influence.&#10;&#10;At the end of the game, players compare captured symbols of each type,\n            competing for majorities in each of the three types. Ties are not uncommon and are broken based on the\n            number of other, &quot;non-majority&quot; symbols each player has collected.&#10;&#10;The\n            game is part of what is sometimes called the Knizia tile-laying trilogy.&#10;&#10;\n        ",
+      "minAge": 10,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 4,
+      "releaseYear": 1998,
+      "imageURL": "\n            https://cf.geekdo-images.com/o9-sNXmFS_TLAb7ZlZ4dRA__original/img/TPKZgpNxB_C73RNbhKyP6UR76X0=/0x0/filters:format(jpeg)/pic3211873.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/o9-sNXmFS_TLAb7ZlZ4dRA__small/img/22MSUC0-ZWgwzhi_VKIbENJik1w=/fit-in/200x150/filters:strip_icc()/pic3211873.jpg\n        ",
+      "genres": ["MEDIEVAL", "ABSTRACT_STRATEGY"]
     },
     {
-      "id": 104,
-      "title": "sint",
-      "author": "Clementina Jast",
-      "rating": 0.95,
-      "year_published": 1909
+      "gameId": 4,
+      "title": "Tal der KÃ¶nige",
+      "description": "When you see the triangular box and the luxurious, large blocks of Tal der K&ouml;nige (German:\n            &quot;Valley of the Kings&quot;), you can tell this game was designed to be beautiful as well as\n            functional. The object of the game is to build pyramids out of the different colored blocks. A pyramid\n            scores more points when it's made from a few colors, but it's much harder to consistently outbid the other\n            players for the necessary blocks. The game is over when the Pharoah's Pyramid in the center is completed,\n            which is built using all the blocks that the players don't use during the course of the game.&#10;&#10;Final\n            round 1990 Hippodice Spieleautorenwettbewerb.&#10;&#10;\n        ",
+      "minAge": 12,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 4,
+      "releaseYear": 1992,
+      "imageURL": "\n            https://cf.geekdo-images.com/nYiYhUlatT2DpyXaJqXK3w__original/img/2NNluROL0K_q4H8yMxIyoiHXnxc=/0x0/filters:format(jpeg)/pic285299.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/nYiYhUlatT2DpyXaJqXK3w__small/img/igbXSLFwM7XAz78r1FeVVVe6gJk=/fit-in/200x150/filters:strip_icc()/pic285299.jpg\n        ",
+      "genres": ["ANCIENT"]
     },
     {
-      "id": 105,
-      "title": "dolores soluta quis corporis pariatur",
-      "author": "Camron Kreiger",
-      "rating": 0.3,
-      "year_published": 1707
+      "gameId": 5,
+      "title": "Acquire",
+      "description": "In Acquire, each player strategically invests in businesses, trying to retain a majority of stock.\n            As the businesses grow with tile placements, they also start merging, giving the majority stockholders of\n            the acquired business sizable bonuses, which can then be used to reinvest into other chains. All of the\n            investors in the acquired company can then cash in their stocks for current value or trade them 2-for-1 for\n            shares of the newer, larger business. The game is a race to acquire the greatest wealth.&#10;&#10;History\n            of Acquire: This Sid Sackson classic has taken many different forms over the years depending on the\n            publisher, yet the rules and game play have stayed the same. The 1966 version of the 3M bookshelf edition\n            included rules for a 2-player variant. The original version is part of the 3M Bookshelf Series.&#10;&#10;Many\n            books and websites incorrectly list this as a 1962 publication as the 3M Company used previously copyrighted\n            artwork when they released the game in 1964. 3M actually received the idea for the game of &quot;Vacations&quot;\n            from Sid Sackson in May of 1963 and decided to take his idea and put it into artwork they had developed the\n            year before for a game called &quot;ACQUIRE.&quot; 3M's original game idea for a game called ACQUIRE\n            must not have been very good so they decided to take Sid's idea of Vacations and put it into their concept\n            of ACQUIRE. They released some limited test market games in 8 Midwestern U.S. cities in December of 1963\n            with a box that had a 1963 copyright. These games had Sid's original rules. When 3M released the mass market\n            games in 1964, they had developed some of Sid's original ideas and changed some rules and game play to match\n            their production desires. They released them with outer boxes that were copyrighted 1962 and inner boxes\n            with rules that were dated 1963.&#10;&#10;December 1963 - Test Market World Map Wood Tile Edition&#10;1964\n            - Dated 1962/63 wood tiles, chipboard with plastic overlay &amp; stocks with printed backs&#10;1965\n            - Dated 1962/63 plastic tiles, chipboard with plastic overlay &amp; stocks with printed backs (last\n            edition made with printed backs until 1999)&#10;1966 - Dated 1962/66 plastic tiles, chipboard with\n            plastic overlay &amp; non-wax coated stocks (Only edition with these stocks)&#10;1968 - Dated\n            1968/66 plastic tiles, clear plastic board with paper underlay (Both 1966 inner box games have a lot of\n            mixed parts)&#10;1971 - Dated 1968/71 plastic tiles, yellow hard plastic board&#10;1975 - 3M sells\n            rights for game of ACQUIRE to the Avalon Hill Company&#10;1976 - Dated 1976 plastic tiles, yellow hard\n            plastic board, redesigned money, no inner box (This edition was also produced in 1977, 79, 81, 82, &amp;\n            86)&#10;1989 - Dated 1976 Gray box edition with new box artwork same contents as regular 1976 editions\n            (This edition was also produced in 1992)&#10;1995 - Dated 1995 Large box cardboard edition with\n            chipboard board and tiles, Special Powers Variant Tiles inspired by German editions&#10;1997 - Avalon\n            Hill sells the rights to the game of ACQUIRE to Hasbro&#10;1999 - Dated 1999 Large box with large\n            plastic board and tiles, 3D company buildings, redesigned stocks &amp; money, large info cards&#10;2006\n            - Hasbro assigns rights for the game of ACQUIRE to their subsidiary, Wizards of the Coast&#10;2006 -\n            Lloyd's (private) Rules of ACQUIRE are made public, two major rule changes that help to bring the balance of\n            the game of ACQUIRE back to the intentions of Sid Sackson's original ideas. Lloyd Solon's Rules help players\n            to correct poor strategy during the beginning of the game that can been seen with new and unexperienced\n            players (running out of money soon is the main mistake that must be omitted!). &#10;2008 - Dated 2008\n            cardboard edition with chipboard board &amp; tiles, redesigned stocks &amp; money&#10;2016 -\n            Dated 2016 The current affordable mass-market edition. It looks at first sight to be similar to previous\n            modern editions, but has been criticised for the use of inferior design choices such as hard-to-read\n            grey-on-grey embossed slots and the unusual tile fonts. It contains modified rules and a slightly smaller\n            playing grid. Although these changes have been criticised for not ultimately improving upon Sackson's\n            original design, they are generally regarded as not being too damaging to it.&#10;2023 - Renegade Game\n            Studio partners with Hasbro, and releases their new version, with Classic Mode or Tycoon Mode &mdash;\n            play with or without tertiary stockholder merger bonus. &#10;2024 - The Renegade 60th Anniversary\n            edition includes a set of plastic weighted poker chips, and Special Powers Variant cards.&#10;&#10;\n        ",
+      "minAge": 12,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 6,
+      "releaseYear": 1963,
+      "imageURL": "\n            https://cf.geekdo-images.com/gIQlWhlaqjPiunZjjwz_XA__original/img/ZRnstiRspAWMorOn6UKoKx9ibwI=/0x0/filters:format(jpeg)/pic8483227.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/gIQlWhlaqjPiunZjjwz_XA__small/img/f06arYYwY_QZmOnAbQhhg-6mIUo=/fit-in/200x150/filters:strip_icc()/pic8483227.jpg\n        ",
+      "genres": ["ECONOMIC", "TERRITORY_BUILDING"]
     },
     {
-      "id": 106,
-      "title": "illo vero amet",
-      "author": "Dameon Wunsch",
-      "rating": 3.85,
-      "year_published": 1796
+      "gameId": 6,
+      "title": "Mare Mediterraneum",
+      "description": "In the ancient lands along the Mediterranean, players attempt to satisfy their unique victory\n            conditions via trade, war and construction. This lavishly produced game contains tons of wooden game\n            components and a beautiful roll-out vinyl map. Players produce a score of different commodities to trade\n            with other cities in the hope of creating enough income to fill their capitals with buildings, produce\n            artwork, and fill warehouses with goods.&#10;&#10;\n        ",
+      "minAge": 12,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 6,
+      "releaseYear": 1989,
+      "imageURL": "\n            https://cf.geekdo-images.com/277POF80AUz2ZE9XSApyDg__original/img/hQCIS_adSN2LfBgUCsEpJ6CsPVQ=/0x0/filters:format(jpeg)/pic28424.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/277POF80AUz2ZE9XSApyDg__small/img/FUFTIqOZLoPbHTbD4Zg2uvLry-A=/fit-in/200x150/filters:strip_icc()/pic28424.jpg\n        ",
+      "genres": ["NAUTICAL", "CIVILIZATION"]
     },
     {
-      "id": 107,
-      "title": "itaque suscipit beatae atque ut",
-      "author": "Diamond Hoeger",
-      "rating": 0.25,
-      "year_published": 1850
+      "gameId": 7,
+      "title": "Cathedral",
+      "description": "In Cathedral, each player has a set of pieces of a different color. The pieces are in the shapes of\n            buildings, covering from one to five square units. The first player takes the single neutral Cathedral piece\n            and places it onto the board. Players then alternate placing one of their buildings onto the board until\n            neither player can place another building. Players capture territory by surrounding areas that are occupied\n            by at most one opponent or neutral building. A captured piece is removed and captured territory becomes\n            off-limits to the opponent. The player with the fewest 'square units' of buildings that can't be placed\n            wins.&#10;&#10;\n        ",
+      "minAge": 8,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 2,
+      "releaseYear": 1979,
+      "imageURL": "\n            https://cf.geekdo-images.com/78Dgd-b_1_xEv4OXVKdaag__original/img/1V-WCnoHrm2tDjBHpXfxoKp2rCo=/0x0/filters:format(jpeg)/pic7012177.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/78Dgd-b_1_xEv4OXVKdaag__small/img/mrvl6BsXE-IGkqt2otFbIe7zYV4=/fit-in/200x150/filters:strip_icc()/pic7012177.jpg\n        ",
+      "genres": [
+        "CHILDRENS_GAME",
+        "CITY_BUILDING",
+        "TERRITORY_BUILDING",
+        "ABSTRACT_STRATEGY"
+      ]
     },
     {
-      "id": 108,
-      "title": "ex porro",
-      "author": "Jett Balistreri",
-      "rating": 4.3,
-      "year_published": 1743
+      "gameId": 8,
+      "title": "Lords of Creation",
+      "description": "In this interesting offering from Warfrog, players become Gods seeking to dominate a world with\n            their followers. The first part of the game involves constructing the game board, after which players take\n            turns using cards to determine how many new people should appear and what type of terrain they will inhabit.\n            All tribes start off as barbarians, but soon the calming effect of civilization settles the marauding bands;\n            although civilized tribes score more, they can no longer attack. What they can do, though, is civilize other\n            players' followers. Sure it gives opponents more points, but at least those followers won't come after you!&#10;&#10;\n        ",
+      "minAge": 12,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 5,
+      "releaseYear": 1993,
+      "imageURL": "\n            https://cf.geekdo-images.com/-pwShxFPJWrxye8o193e-w__original/img/QVz5wc68n_jsB3OcsANsZdZLpw0=/0x0/filters:format(jpeg)/pic374320.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/-pwShxFPJWrxye8o193e-w__small/img/yu4YwhAZrZdjo4xTTu2cdpc-nlA=/fit-in/200x150/filters:strip_icc()/pic374320.jpg\n        ",
+      "genres": ["CIVILIZATION", "FANTASY"]
     },
     {
-      "id": 109,
-      "title": "labore dolorem",
-      "author": "Amir Schamberger",
-      "rating": 4.2,
-      "year_published": 2002
+      "gameId": 9,
+      "title": "El Caballero",
+      "description": "Although referred to as a sequel to El Grande, El Caballero shares few aspects with its namesake,\n            being a fun but intense brain-burner in which players explore and attempt to control the lands and waterways\n            of the New World.&#10;&#10;The players are following Columbus by exploring the islands he\n            discovered. Players slowly explore the islands &ndash; by picking and placing land tiles that are most\n            favorable to them &ndash; and discover wealth in the form of gold and fish. As they learn about the land\n            and sea areas of this new land, they position their caballeros to try to maintain control of the important\n            regions. Castillos give them a measure of protection from others, and ships allow them to establish trade\n            and to fish for food. Success is measured in the size of land and sea areas they control. Their success is\n            measured twice, and in the end these scores are summed and the winner declared.&#10;&#10;\n        ",
+      "minAge": 13,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 4,
+      "releaseYear": 1998,
+      "imageURL": "\n            https://cf.geekdo-images.com/lWotCtplnl0sI3bS_jF3-Q__original/img/lpPExjqfY9fpRvaqnlhVkhKPoqU=/0x0/filters:format(jpeg)/pic1731731.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/lWotCtplnl0sI3bS_jF3-Q__small/img/ShhWmA15xDKbigT_kE3CTAfs3Y0=/fit-in/200x150/filters:strip_icc()/pic1731731.jpg\n        ",
+      "genres": ["EXPLORATION"]
     },
     {
-      "id": 110,
-      "title": "animi est nesciunt perferendis ut",
-      "author": "Buddy Sipes",
-      "rating": 1.1,
-      "year_published": 1756
-    },
-    {
-      "id": 111,
-      "title": "quidem aut ut error",
-      "author": "Destany Reichert",
-      "rating": 0.3,
-      "year_published": 1785
-    },
-    {
-      "id": 112,
-      "title": "quasi rerum unde velit itaque qui",
-      "author": "Abby Nader",
-      "rating": 0.65,
-      "year_published": 1996
-    },
-    {
-      "id": 113,
-      "title": "enim ea non eum autem",
-      "author": "Nichole Kling",
-      "rating": 4,
-      "year_published": 1794
-    },
-    {
-      "id": 114,
-      "title": "suscipit et",
-      "author": "Brent Bashirian",
-      "rating": 2.3,
-      "year_published": 1790
-    },
-    {
-      "id": 115,
-      "title": "ex qui molestiae aut",
-      "author": "Connor Fritsch",
-      "rating": 0.3,
-      "year_published": 1835
+      "gameId": 10,
+      "title": "Elfenland",
+      "description": "Elfenland is a redesign of the original White Wind game Elfenroads. The game is set in the mythical\n            world of the elves. A group of fledgling elves (the players) are charged with visiting as many of the twenty\n            Elfencities as they can over the course of 4 rounds. To accomplish the task they will use various forms of\n            transportation such as Giant Pigs, Elfcarts, Unicorns, Rafts, Magic Clouds, Trollwagons, and Dragons.&#10;&#10;Gameplay:\n            Players begin in the Elf capitol, draw one face down movement tile, and are dealt eight transport cards and\n            a secret 'home' city card that they must reach at the end of the 4th round or lose points for each city\n            space away from 'home' they are at the end of the game. Markers of each player's color are placed in each\n            city on the board and are collected when the player visits that city (each counts as 1 point).&#10;\n            &#10; The round proceeds in 2 stages. The first part of the round consists of the drawing of Tiles\n            showing the differing types of transport (except rafts) from a combination of face up and face down tiles\n            (if a player doesn't like the 5 tiles that are face up; they can always draw blind from the face down tiles\n            and hope to get one they need). These transport tiles need to match the Transportation cards in your hand to\n            use them most effectively. After each player has a total of 4 tiles they take turns placing a tile on any\n            one of the roads that run between the elf cities. Only one transport tile may be placed on each road; so\n            players may use other players tiles to travel if they have the matching cards in their hand. This frequently\n            causes a readjustment of planned travel routes as other players tiles can allow you to move farther or\n            shorter than you had first thought. Players can play their tiles to help themselves or hinder others by\n            playing a slow mode of transport on another players (perceived) path.&#10;&#10;Each mode of\n            transport has certain terrain it can travel through quickly or slowly, and those that it cannot. These are\n            listed on the top of each transportation card by the number terrain symbols. The number of terrain symbols\n            equals how many matching cards you must play to move across a given tile in a given terrain. For example, a\n            Magic Cloud tile placed in a mountain would take one Magic cloud card to travel across (1 mountain symbol on\n            card means Magic clouds are fast in mountains). If the same tile was placed on a road in forest terrain it\n            would require 2 Magic Cloud cards to travel that route (2 Forest symbols on card means Magic Clouds are slow\n            in Forest). Magic Clouds cannot travel in desert terrain at all (no desert symbols on card). All modes of\n            transport are different and Rafts can be used on rivers or lakes without needing tiles. Rafts go slow\n            upstream (2 raft cards needed) and fast downstream (1 card needed). The small lake requires 1 raft card to\n            travel across and the larger lake requires 2 cards to travel across. Players may keep one unused transport\n            counter and up to 4 Transportation cards from one round to the next.&#10;&#10;The second part of the\n            round begins after all players have finished placing their transportation tiles for the round. Each player\n            plays his cards and moves his elf-boot around the board collecting his tokens from the cities visited. If\n            there is a Transport tile on a route and a player has no matching Transportation card he may 'Caravan'\n            across it by playing any 3 Transportation cards from his hand.&#10;&#10;As a bit of 'take that' each\n            player has a trouble tile which can be placed next to any transportation tile during the first part of the\n            round. This counter means that in order to travel that path an additional card of the transport type must be\n            played or 4 cards to 'Caravan'.&#10;&#10;Victory: if at the end of round 3 a player has visited all\n            20 cities he is the winner. If not the game ends after round 4 when 'Home' cities are revealed and each\n            player subtracts points for each city he is away from his 'home' subtracting that from his collected city\n            tokens. The person with the highest score wins.&#10;&#10;\n        ",
+      "minAge": 10,
+      "minNoOfPlayers": 2,
+      "maxNoOfPlayers": 6,
+      "releaseYear": 1998,
+      "imageURL": "\n            https://cf.geekdo-images.com/Ea4jN5Ko5bPrXrU_AYhhzg__original/img/DEi0SFU6mAMZYycGTEJAV4ZBRVw=/0x0/filters:format(jpeg)/pic1798136.jpg\n        ",
+      "thumbnailURL": "\n            https://cf.geekdo-images.com/Ea4jN5Ko5bPrXrU_AYhhzg__small/img/f4FrKXF0HKlPS2jH1AW4_-7Hek8=/fit-in/200x150/filters:strip_icc()/pic1798136.jpg\n        ",
+      "genres": ["TRAVEL", "FANTASY"]
     }
   ]
 }
