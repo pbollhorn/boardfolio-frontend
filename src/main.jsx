@@ -2,19 +2,19 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import App from "./App.jsx";
-import BrowseGames from "./components/BrowseGames.jsx";
-import MyList from "./components/MyLists.jsx";
-import GameList from "./components/GameList.jsx";
-import CreateList from "./components/CreateList.jsx";
-import MyGameList from "./components/MyGameList.jsx";
-import Register from "./components/Register.jsx";
-import Frontpage from "./components/Frontpage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import BrowseGames from "./pages/BrowseGames.jsx";
+import MyList from "./pages/MyLists.jsx";
+import CreateList from "./pages/CreateList.jsx";
+import MyGameList from "./pages/MyGameList.jsx";
+import Register from "./pages/Register.jsx";
+import Frontpage from "./pages/Frontpage.jsx";
+import SearchGames from "./pages/SearchGames.jsx";
 import { AuthProvider } from "./context/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "search",
-        // element: <SearchGames />,
+        element: <SearchGames />,
       },
       {
         path: "/:username/mylists",

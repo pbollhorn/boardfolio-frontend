@@ -2,21 +2,21 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "./LoginForm.jsx";
+import LoginForm from "../components/LoginForm.jsx";
 
 export default function MyGameList() {
+  const listID = location.state?.list?.listID;
+
   const location = useLocation();
   const navigate = useNavigate();
   const { username: routeUsername } = useParams();
   const { isLoggedIn, username: authUsername, username } = useAuth();
 
-  const listID = location.state?.list?.listID;
-
-  // Local state
   const [games, setGames] = useState([]);
   const [listName, setListName] = useState("");
   const [isPublic, setIsPublic] = useState(false);
   const [error, setError] = useState(null);
+  const [customLists, setCustomLists] = useState([]);
 
   const safeAuthUser = authUsername?.toLowerCase();
   const safeRouteUser = routeUsername?.toLowerCase();
@@ -45,8 +45,6 @@ export default function MyGameList() {
   const removeGame = (gameId) => {
     setGames((prevGames) => prevGames.filter((game) => game.gameId !== gameId));
   };
-
-  const [customLists, setCustomLists] = useState([]);
 
   // fetches the user's list of gameLists
   function getUserListOfGameLists(username) {
