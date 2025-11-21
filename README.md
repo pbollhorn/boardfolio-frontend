@@ -16,11 +16,11 @@ Each team works in their own dev branch:
 
 From these branches can be merged into:
 
-- `dev` (requires pull request)
-
-From `dev` can be merged into:
-
 - `main` (requires pull request)
+
+Remember to merge `main` into your active development branch regularly.
+
+NB: `dev` branch is deprecated and to be deleted
 
 ## Getting Started
 
