@@ -5,7 +5,6 @@ import { useAuth } from "../context/useAuth.js";
 import LoginForm from "../components/LoginForm.jsx";
 
 export default function MyGameList() {
-  const listID = location.state?.list?.listID;
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,6 +19,8 @@ export default function MyGameList() {
 
   const safeAuthUser = authUsername?.toLowerCase();
   const safeRouteUser = routeUsername?.toLowerCase();
+
+  const listID = location.state?.list?.listID;
 
   // Fetch the list from location.state or backend
   useEffect(() => {
