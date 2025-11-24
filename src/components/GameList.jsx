@@ -30,7 +30,6 @@ export default function GameList({
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <label>
-          List Name:{" "}
           <input
             type="text"
             value={listName}
