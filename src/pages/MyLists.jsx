@@ -54,6 +54,7 @@ export default function MyList() {
   const collection = sortedGames[0]; // the lowest ID is the collection
   const customLists = sortedGames.slice(1); // the rest are custom lists
 
+  // TODO: lists should show number of games in a column
   return (
     <div className="container">
       <LoginForm />
