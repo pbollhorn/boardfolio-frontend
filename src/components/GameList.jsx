@@ -1,5 +1,5 @@
 import GameListItem from "./GameListItem";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function GameList({
   games = [],
