@@ -4,7 +4,7 @@ import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
 import LoginForm from "../components/LoginForm.jsx";
 
-export default function MyGameList() {
+export default function CustomList() {
   const listID = location.state?.list?.listID;
 
   const location = useLocation();
