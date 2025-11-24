@@ -25,7 +25,7 @@ export default function GameListItem({
         {game.releaseYear && <div className="text-muted small">{game.releaseYear}</div>}
       </div>
 
-      {/* Remove button only if owner & not collection */}
+      {/* Remove button only if owner */}
       {canRemove && (
         <button
           className="btn btn-danger btn-sm"
