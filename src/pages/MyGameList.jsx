@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "../components/LoginForm.jsx";
 
 export default function MyGameList() {
   const listID = location.state?.list?.listID;
@@ -109,7 +108,6 @@ export default function MyGameList() {
   if ((!isLoggedIn || safeAuthUser !== safeRouteUser) && !isPublic) {
     return (
       <div>
-        <LoginForm />
         <h2>This list is private!</h2>
       </div>
     );
@@ -119,7 +117,6 @@ export default function MyGameList() {
   if (isLoggedIn && safeAuthUser === safeRouteUser) {
     return (
       <div>
-        <LoginForm />
         <h2>Edit List</h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -174,7 +171,6 @@ export default function MyGameList() {
   // Viewer mode for public list
   return (
     <div>
-      <LoginForm />
       <h2>
         {routeUsername}'s {listName}
       </h2>

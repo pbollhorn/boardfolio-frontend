@@ -2,7 +2,7 @@ import facade from "../util/apiFacade.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "../components/LoginForm.jsx";
+import { Link } from "react-router-dom"; 
 
 export default function CreateList() {
   const [listName, setListname] = useState("");
@@ -31,9 +31,15 @@ export default function CreateList() {
   // Can't create lists if you don't have a useraccount
   if (!isLoggedIn) {
     return (
-      <div>
-        <h2>You must first login to create a list</h2>
-        <LoginForm />
+      <div className="text-center mt-4">
+        <h2 className="mb-3">You must first login to create a list</h2>
+  
+        <Link 
+          to="/login" 
+          className="btn btn-dark rounded-pill px-4 py-2 fw-semibold"
+        >
+          Go to Login
+        </Link>
       </div>
     );
   }
