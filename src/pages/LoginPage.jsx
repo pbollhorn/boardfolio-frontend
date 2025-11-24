@@ -43,19 +43,15 @@ export default function LoginPage() {
   return (
     <div className="container d-flex justify-content-center align-items-start min-vh-100 pt-5">
       <div style={{ maxWidth: "380px", width: "100%" }}>
-        {/* Title */}
         <h1 className="text-center fw-semibold mb-4">Board game collector</h1>
 
-        {/* Create account subtitle */}
         <h5 className="fw-semibold mb-1">Login with an account</h5>
         <p className="text-muted mb-3">Enter your username to Login for this app</p>
 
-        {/* Error */}
         {errorMessage && (
           <div className="alert alert-danger py-2">{errorMessage}</div>
         )}
 
-        {/* Login form */}
         <form onSubmit={handleLogin} className="mb-3">
           <input
             type="text"
@@ -81,7 +77,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="d-flex align-items-center my-3">
           <div className="flex-grow-1 border-top"></div>
           <span className="mx-2 text-muted">or</span>
@@ -95,10 +90,6 @@ export default function LoginPage() {
   <span className="me-2">👤</span>
   Continue to Register
 </Link>
-
-  
-
-     
       </div>
     </div>
   );

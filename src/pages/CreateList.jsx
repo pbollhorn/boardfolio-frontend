@@ -15,10 +15,8 @@ export default function CreateList() {
     e.preventDefault();
     try {
       await facade.createList(username, listName, isPublic);
-      //TODO: navigate to page where you can add games to a list
       navigate(`/${username}/mylists`);
-      // Optionally, use a toast instead of alert:
-      // setSuccess("Registration successful!")  // if you want a green bubble
+      
       alert("New list created, you can now add games to it!");
       setError("");
     } catch (err) {
@@ -27,8 +25,7 @@ export default function CreateList() {
     }
   };
 
-  // If not logged in, show loginform
-  // Can't create lists if you don't have a useraccount
+  
   if (!isLoggedIn) {
     return (
       <div className="text-center mt-4">
