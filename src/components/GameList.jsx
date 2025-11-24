@@ -1,4 +1,5 @@
 import GameListItem from "./GameListItem";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 export default function GameList({
   games = [],
@@ -13,6 +14,8 @@ export default function GameList({
   onNameChange,
   onPublicToggle,
 }) {
+  const { username: routeUsername } = useParams();
+  const username = routeUsername;
   // Private list lock
   if (!isOwner && !isPublic) {
     return <h2>This list is private!</h2>;
@@ -61,7 +64,7 @@ export default function GameList({
         </div>
 
         <button className="btn btn-primary" onClick={onSubmitUpdate}>
-          Submit Updated List
+          Save
         </button>
 
         {!isCollection && (
@@ -76,7 +79,14 @@ export default function GameList({
   // Public viewer mode
   return (
     <div>
-      <h2>{listName}</h2>
+      {/* Shows the username for the owner of the list from the URL, if it exists */}
+      {username && (
+        <h2>
+          {username}
+          {"'s "}
+          {listName}
+        </h2>
+      )}
 
       {games.length === 0 ? (
         <p>This list is empty!</p>
