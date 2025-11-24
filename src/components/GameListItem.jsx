@@ -1,37 +1,48 @@
 import NoPoster from "../assets/NoPoster.png";
 
-export default function GameListItem({
-  game,
-  isOwner = false,
-  onRemove,
-}) {
-  const thumbnail = game.thumbnailURL || game.thumbnail || game.image || NoPoster;
+export default function GameListItem({ game, isOwner = false, onRemove }) {
+  const thumbnail =
+    game.thumbnailURL || game.thumbnail || game.image || NoPoster;
 
   const canRemove = isOwner && typeof onRemove === "function";
 
   return (
-    <div className="d-flex align-items-center mb-3 p-2 border rounded">
-      <img
-        className="me-3 rounded"
-        src={thumbnail}
-        style={{ width: "70px", height: "70px", objectFit: "cover" }}
-        alt={game.title}
-      />
+    <div className="d-flex align-items-center mb-3">
+      {/* CARD */}
+      <div className="card me-2" style={{ width: "350px" }}>
+        <div className="row g-0">
+          <div className="col-4">
+            <img
+              src={thumbnail}
+              className="img-fluid rounded-start"
+              alt={game.title}
+              style={{ objectFit: "cover", height: "100px" }}
+            />
+          </div>
 
-      <div className="flex-grow-1">
-        <div className="fs-5 fw-semibold">{game.title}</div>
+          <div className="col-8">
+            <div className="card-body p-2">
+              <h5 className="card-title mb-1">{game.title}</h5>
 
-        {/* Optional metadata if you want */}
-        {game.releaseYear && <div className="text-muted small">{game.releaseYear}</div>}
+              {game.releaseYear && (
+                <p className="card-text mb-0">
+                  <small className="text-body-secondary">
+                    Released: {game.releaseYear}
+                  </small>
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Remove button only if owner */}
+      {/* BUTTON */}
       {canRemove && (
         <button
           className="btn btn-danger btn-sm"
           onClick={() => onRemove(game.gameId)}
         >
-          Remove
+          <i className="bi bi-trash"></i>
         </button>
       )}
     </div>
