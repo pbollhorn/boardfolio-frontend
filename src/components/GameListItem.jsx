@@ -2,13 +2,12 @@ import NoPoster from "../assets/NoPoster.png";
 
 export default function GameListItem({ game, isOwner = false, onRemove }) {
   const thumbnail =
-    game.thumbnailURL || game.thumbnail || game.image || NoPoster;
+    game.thumbnailURL || game.image || NoPoster;
 
   const canRemove = isOwner && typeof onRemove === "function";
 
   return (
     <div className="d-flex align-items-center mb-3">
-      {/* CARD */}
       <div className="card me-2" style={{ width: "350px" }}>
         <div className="row g-0">
           <div className="col-4">
@@ -36,7 +35,6 @@ export default function GameListItem({ game, isOwner = false, onRemove }) {
         </div>
       </div>
 
-      {/* BUTTON */}
       {canRemove && (
         <button
           className="btn btn-danger btn-sm"
