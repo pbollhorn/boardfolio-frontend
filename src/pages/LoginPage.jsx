@@ -13,11 +13,11 @@ export default function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-
+  
     try {
       await login(inputUser, password);
       navigate("/");
-    } catch (err) {
+    } catch {
       setErrorMessage("Wrong username or password!");
     }
   };

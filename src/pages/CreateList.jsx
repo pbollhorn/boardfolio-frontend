@@ -8,7 +8,7 @@ export default function CreateList() {
   const [listName, setListname] = useState("");
   const { isLoggedIn, username } = useAuth();
   const [isPublic, setPublic] = useState("");
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const navigate = useNavigate();
 
   const handleNewList = async (e) => {
