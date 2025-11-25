@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
+import ToggleModeButton from "../components/ToggleModeButton.jsx";
 
 export default function FrontPage() {
-  function toggleLightDarkMode() {
-    alert("hello world");
-    document.documentElement.setAttribute("data-bs-theme", "light");
-  }
-
   return (
     <div class="container">
       <h1>BoardFolio Dummy Frontpage</h1>
@@ -17,7 +13,7 @@ export default function FrontPage() {
         <br />
         <Link to="/search">Search Games</Link>
       </div>
-      <button onClick={toggleLightDarkMode}>Toggle light/dark mode</button>
+      <ToggleModeButton />
     </div>
   );
 }
