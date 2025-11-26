@@ -27,7 +27,7 @@ export default function BrowseGames() {
   }, []); // Runs on mount
 
   return (
-    <div class="container">
+    <div className="container">
       <h1>Browse Games</h1>
       {statusMessage ? <p>{statusMessage}</p> : <GameList list={gameList} />}
     </div>
