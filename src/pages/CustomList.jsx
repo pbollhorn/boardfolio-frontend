@@ -68,7 +68,7 @@ export default function CustomList() {
   const updateList = async () => {
     try {
       const mappedGames = games.map((game) => ({
-        bgg_API_ID: game.gameId,
+        BGG_API_ID: game.gameId,
         title: game.title,
         description: game.description,
         minNoOfPlayers: game.minNoOfPlayers,
