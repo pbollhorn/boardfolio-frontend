@@ -84,8 +84,8 @@ export default function MyList() {
             key={gameList.listID}
             to={`/${username}/mylists/${gameList.listID}`}
             state={{ list: gameList }}
+            className="text-decoration-none"
           >
-            {console.log(gameList)}
             <div className="card mb-4 px-4">
               <div className="d-flex align-items-baseline gap-2 py-4">
                 <h2 className="card-title">{gameList.name}</h2>
