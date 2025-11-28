@@ -101,10 +101,15 @@ export default function MyList() {
         <p>No custom lists yet</p>
       )}
 
-      <br />
-      <Link to={`/${username}/mylists/newlist`}>
-        <button id="createList">Create List</button>
-      </Link>
+      <div className="text-center mt-4">
+        <Link
+          to={`/${username}/mylists/newlist`}
+          className="btn btn-secondary"
+          id="createList"
+        >
+          Create List
+        </Link>
+      </div>
 
       <Outlet />
     </div>

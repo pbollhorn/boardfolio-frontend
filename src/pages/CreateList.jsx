@@ -39,10 +39,11 @@ export default function CreateList() {
   }
 
   return (
-    <div className="container">
-      <h3>Create a new list!</h3>
+    <div className="text-center mt-4">
+      <h3 className="mb-5">Create a new list!</h3>
       <form onSubmit={handleNewList}>
         <input
+          className=" mx-4"
           type="text"
           id="listname"
           name="listname"
@@ -50,18 +51,25 @@ export default function CreateList() {
           value={listName}
           onChange={(e) => setListname(e.target.value)}
         />
-        <br />
+
         <input
+        className="mb-4"
           type="checkbox"
           id="public"
           checked={isPublic}
           onChange={(e) => setPublic(e.target.checked)}
         />
-        <label htmlFor="public">Public</label>
-        <br />
-        <button type="submit" id="bt-createList">
-          Create List
-        </button>
+        <label className="m-2" htmlFor="public">Public</label>
+
+        <div className="text-center mt-4">
+          <button
+            type="submit"
+            id="bt-createList"
+            className="btn btn-secondary"
+          >
+            Create List
+          </button>
+        </div>
       </form>
     </div>
   );
