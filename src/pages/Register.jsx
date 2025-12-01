@@ -25,19 +25,16 @@ export default function Register() {
 
       let message = "Registration failed. Please try again.";
 
-      // 🎯 Special case: username already exists (422 from your backend)
       if (err.status === 422) {
         message = "That username is already taken. Please choose another.";
       }
-      // Optional: other status codes you might want to handle
+    
       else if (err.status === 400) {
         message = "Invalid input. Please check your username and password.";
       }
-      // If your ApiException sends a JSON body with a message
       else if (err.fullError && err.fullError.message) {
         message = err.fullError.message;
       }
-      // Fallback to generic JS error message if present
       else if (err.message) {
         message = err.message;
       }
