@@ -54,66 +54,62 @@ export default function MyList() {
   const collection = sortedGames[0]; // the lowest ID is the collection
   const customLists = sortedGames.slice(1); // the rest are custom lists
 
+  // TODO: lists should show number of games in a column
   return (
     <div className="container">
       <LoginForm />
-      <h1>My Collection</h1>
-      <br />
+      <div className="card mt-4 mb-4">
+        <h2 class="card-title text-center py-4">{username}</h2>
+      </div>
+      <h5>My Collection</h5>
       {collection ? (
-        <table>
-          <tbody>
-            <tr key={collection.listID}>
-              <td>
-                <Link
-                  to={`/${username}/mylists/${collection.listID}`}
-                  state={{ list: collection }}
-                >
-                  {collection.name}
-                </Link>
-              </td>
-              {/* TODO: collections should have a timestamp? */}
-              {/* <td>{formatArrayDate(collection.createdDate)}</td> */}
-            </tr>
-          </tbody>
-        </table>
+        <Link
+          to={`/${username}/mylists/${collection.listID}`}
+          state={{ list: collection }}
+        >
+          <div className="card mb-4 px-4">
+            <p className=" card-text py-3">
+              Number of games: {collection.customList.length}
+            </p>
+          </div>
+        </Link>
       ) : (
         <p>Looks like your collection is empty!</p>
       )}
 
-      <h1>{username}'s Custom Lists</h1>
-      <br />
+      <h5>{username}'s custom lists</h5>
       {customLists ? (
-        <table>
-          <thead>
-            <tr>
-              <th>List Name</th>
-              <th>Created Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customLists.map((gameList) => (
-              <tr key={gameList.listID}>
-                <td>
-                  <Link
-                    to={`/${username}/mylists/${gameList.listID}`}
-                    state={{ list: gameList }}
-                  >
-                    {gameList.name}
-                  </Link>
-                </td>
-                <td>{formatArrayDate(gameList.createdDate)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        customLists.map((gameList) => (
+          <Link
+            key={gameList.listID}
+            to={`/${username}/mylists/${gameList.listID}`}
+            state={{ list: gameList }}
+            className="text-decoration-none"
+          >
+            <div className="card mb-4 px-4">
+              <div className="d-flex align-items-baseline gap-2 py-4">
+                <h2 className="card-title">{gameList.name}</h2>
+                <p className="card-text">
+                  - Created: {formatArrayDate(gameList.createdDate)}
+                </p>
+              </div>
+              <p>Number of games: {gameList.customList.length}</p>
+            </div>
+          </Link>
+        ))
       ) : (
         <p>No custom lists yet</p>
       )}
 
-      <br />
-      <Link to={`/${username}/mylists/newlist`}>
-        <button id="createList">Create List</button>
-      </Link>
+      <div className="text-center mt-4">
+        <Link
+          to={`/${username}/mylists/newlist`}
+          className="btn btn-secondary"
+          id="createList"
+        >
+          Create List
+        </Link>
+      </div>
 
       <Outlet />
     </div>
