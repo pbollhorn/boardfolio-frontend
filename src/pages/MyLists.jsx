@@ -28,7 +28,9 @@ export default function MyList() {
     return (
       <div>
         <h2>You must first log in to see your user lists!</h2>
-        <LoginForm />
+        <Link to="/login" className="btn btn-primary btn-sm">
+          Go to Login
+        </Link>
       </div>
     );
   }
@@ -56,7 +58,6 @@ export default function MyList() {
   // TODO: lists should show number of games in a column
   return (
     <div className="container">
-      <LoginForm />
       <div className="card mt-4 mb-4">
         <h2 class="card-title text-center py-4">{username}</h2>
       </div>

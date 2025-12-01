@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade.js";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "../components/LoginForm.jsx";
 import GameList from "../components/GameList.jsx";
 
 export default function CustomList() {
