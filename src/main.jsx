@@ -6,7 +6,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import BrowseGames from "./pages/BrowseGames.jsx";
 import MyList from "./pages/MyLists.jsx";
 import CreateList from "./pages/CreateList.jsx";
-import MyGameList from "./pages/MyGameList.jsx";
+import CustomList from "./pages/CustomList.jsx";
 import Register from "./pages/Register.jsx";
 import Frontpage from "./pages/Frontpage.jsx";
 import SearchGames from "./pages/SearchGames.jsx";
@@ -25,11 +25,11 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "browse",
+        path: "/browse",
         element: <BrowseGames />,
       },
       {
-        path: "search",
+        path: "/search",
         element: <SearchGames />,
       },
       {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:username/mylists/:listID",
-        element: <MyGameList />,
+        element: <CustomList />,
       },
       {
         path: "/:username/mylists/newlist",
