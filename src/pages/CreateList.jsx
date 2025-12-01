@@ -2,7 +2,7 @@ import facade from "../util/apiFacade.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth.js";
-import LoginForm from "../components/LoginForm.jsx";
+import { Link } from "react-router-dom"; 
 
 export default function CreateList() {
   const [listName, setListname] = useState("");
@@ -15,10 +15,8 @@ export default function CreateList() {
     e.preventDefault();
     try {
       await facade.createList(username, listName, isPublic);
-      //TODO: navigate to page where you can add games to a list
       navigate(`/${username}/mylists`);
-      // Optionally, use a toast instead of alert:
-      // setSuccess("Registration successful!")  // if you want a green bubble
+      
       alert("New list created, you can now add games to it!");
       setError("");
     } catch (err) {
@@ -27,13 +25,18 @@ export default function CreateList() {
     }
   };
 
-  // If not logged in, show loginform
-  // Can't create lists if you don't have a useraccount
+  
   if (!isLoggedIn) {
     return (
-      <div>
-        <h2>You must first login to create a list</h2>
-        <LoginForm />
+      <div className="text-center mt-4">
+        <h2 className="mb-3">You must first login to create a list</h2>
+  
+        <Link 
+          to="/login" 
+          className="btn btn-dark rounded-pill px-4 py-2 fw-semibold"
+        >
+          Go to Login
+        </Link>
       </div>
     );
   }

@@ -11,6 +11,7 @@ import Register from "./pages/Register.jsx";
 import Frontpage from "./pages/Frontpage.jsx";
 import SearchGames from "./pages/SearchGames.jsx";
 import { AuthProvider } from "./context/AuthProvider.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
         path: "/:username/mylists/newlist",
         element: <CreateList />,
       },
+      {
+        path: "/login", 
+        element: <LoginPage />
+      },
+
     ],
   },
 ]);
