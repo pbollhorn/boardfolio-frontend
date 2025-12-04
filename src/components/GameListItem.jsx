@@ -15,7 +15,7 @@ export default function GameListItem({ gameData }) {
             alt={gameData.title}
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8 d-flex align-items-center">
           <div className="card-body">
             <h5 className="card-title">{gameData.title}</h5>
 
